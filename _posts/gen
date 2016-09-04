@@ -2,6 +2,7 @@
  
 echo -n "Post Title(a-post-title): "
 read POST_TITLE
+URL_STYLE_TITLE="${POST_TITLE/ /-}"
 
 echo -n "Post Tags(tag1 tag2 ...): "
 read POST_TAGS
@@ -9,7 +10,7 @@ read POST_TAGS
 POST_DATE=`date +'%F'`
 POST_TIME=`date +'%R %z'`
 
-POST_FILE=$POST_DATE-$POST_TITLE.markdown
+POST_FILE=$POST_DATE-$URL_STYLE_TITLE.markdown
 
 cat > $POST_FILE << _EOF_
 ---
