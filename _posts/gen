@@ -2,7 +2,7 @@
  
 echo -n "Post Title(a-post-title): "
 read POST_TITLE
-URL_STYLE_TITLE="${POST_TITLE/ /-}"
+URL_STYLE_TITLE="${POST_TITLE// /-}"
 
 echo -n "Post Tags(tag1 tag2 ...): "
 read POST_TAGS
@@ -15,7 +15,7 @@ POST_FILE=$POST_DATE-$URL_STYLE_TITLE.markdown
 cat > $POST_FILE << _EOF_
 ---
 layout: post
-title: $POST_TITLE
+title: "$POST_TITLE"
 author: 한경수(hsnks100@gmail.com)
 date: $POST_DATE $POST_TIME
 tags: $POST_TAGS
@@ -26,4 +26,4 @@ tags: $POST_TAGS
 
 _EOF_
 
-vi $POST_FILE
+vim $POST_FILE
