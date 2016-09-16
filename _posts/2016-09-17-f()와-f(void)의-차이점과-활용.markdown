@@ -11,7 +11,8 @@ comments: true
 
 
 이 글은 'C' 에서 입니다. 'C++' 에선 이 문법은 불법입니다..
->void foo1()
+```
+void foo1()
 {
 }
 
@@ -25,11 +26,12 @@ int main()
     foo2();
     return 0;
 }
+```
 
 
 
 와 같은 코드는 될까요? 당연히 됩니다. 그렇다면..
->void foo1()
+void foo1()
 {
 }
 
