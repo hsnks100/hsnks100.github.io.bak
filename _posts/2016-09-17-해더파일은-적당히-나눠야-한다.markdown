@@ -165,7 +165,9 @@ $ time ./incltst main_all
 ```
 다른 분들도 측정하실 수 있도록 소스 파일 첨부합니다.
 
- [incltst.tar.gz](http://yesarang.tistory.com/attachment/jk10.gz)
+[incltst.tar.gz](http://yesarang.tistory.com/attachment/jk10.gz){:target="_blank"}
+
+
 
 여러분이 실험한 결과도 한 번 댓글로 알려 주시면 감사하겠습니다.
 
