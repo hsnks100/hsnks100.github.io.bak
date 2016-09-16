@@ -17,5 +17,53 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 
-# Build settings
-markdown: kramdown
+# Handling Reading
+safe:         false
+include:      [".htaccess"]
+exclude:      ["newpost", "publish", "start", "stop"]
+keep_files:   [".git", ".svn"]
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Filtering Content
+show_drafts: null
+limit_posts: 0
+future:      false
+unpublished: false
+
+# Plugins
+whitelist: []
+gems:
+- jekyll-mentions
+- jekyll-redirect-from
+- jekyll-sitemap
+- jekyll-feed
+- jekyll-paginate
+
+# Conversion
+markdown:    kramdown
+lsi:         false
+excerpt_separator: "\n\n"
+
+# Serving
+detach:  false
+port:    4000
+host:   0.0.0.0
+baseurl: "" # does not include hostname
+
+# Outputting
+permalink:     /post/:year-:month-:day-:title.html
+paginate:      100
+paginate_path: "/page:num"
+timezone:      "Asia/Seoul"
+quiet:         true
+defaults:      []
+
+# Markdown Processors
+kramdown:
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     2..3
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
