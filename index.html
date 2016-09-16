@@ -1,23 +1,28 @@
 ---
 layout: default
 ---
-
 <div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
+  <h1 class="page-heading">글</h1>
   <ul class="post-list">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+  {% if paginator.total_pages > 1 %}
+  <div class="pagination">
+    <h2 class="pagination-heading">다음 페이지</h2>
+    {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+    <span class="pagination-item pagination-current">{{ page }}</span>
+    {% elsif page == 1 %}
+    <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"><span class="pagination-item">{{ page }}</span></a></li>
+    {% else %}
+    <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}"><span class="pagination-item">{{ page }}</span></a>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>
