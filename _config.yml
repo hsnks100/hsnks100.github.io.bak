@@ -78,5 +78,5 @@ kramdown:
 
 highlighter: rouge
 
-sass:
-    sass_dir: css, _sass
+#sass:
+    #sass_dir: css
