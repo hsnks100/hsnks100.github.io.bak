@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cn 사용법"
+title: "C++ fill_n 사용법"
 author: 코딩도사(hsnks100@gmail.com)
 date: 2016-09-17 08:53 +0900
 tags: fill_n C++
