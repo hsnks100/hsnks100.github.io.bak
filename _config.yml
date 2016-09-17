@@ -79,4 +79,4 @@ kramdown:
 highlighter: rouge
 
 sass:
-    sass_dir: css
+    sass_dir: css, _sass
