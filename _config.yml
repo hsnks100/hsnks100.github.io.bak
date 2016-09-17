@@ -9,9 +9,13 @@
 title: CODINGDOSA Blog
 email: hsnks100@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+    각종 스크립트 언어를 좋아하고, 비 스크립트류에선 C++ 을 좋아합니다.
+    그리고 리눅스 상에서 이것저것 설정파일과 shell script 짜는것을 좋아합니다. 
+    Vim plugin 개발에 관심이 많고 알고리즘 문제 풀이도 즐겨합니다.
+    일반적으로 3-Cushion 이라 불리는 당구게임도 매우 좋아합니다.
+
+    포스팅과 관련된 댓글과 문의는 언제나 환영합니다.
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://hsnks100.github.io" # the base hostname & protocol for your site
 #github_username:  hsnks100
