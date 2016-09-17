@@ -1,0 +1,112 @@
+---
+layout: post
+title: "이스케이프 문자와 기타 반복자"
+author: 코딩도사(hsnks100@gmail.com)
+date: 2016-09-17 09:08 +0900
+tags: escape regex RegularExpression
+comments: true
+---
+* table of contents
+{:toc}
+
+
+Non Greedy repeats
+
+기본적으로 정규식은 greedy 방법을 사용한다. greedy 방법은 가능한한 최대의 입력을 취급한다는 이야기다.
+non-greedy 방법은 가능한한 최소의 입력을 받는다.
+abcdaXbcdabcdX 와 같은 문자가 있으면
+(a.+X).* 로 매치했을 때 abcdaXbcdabcdX 가 매치되지만
+아래와 같은 
+(a.+?X).* 같은 표현으로 매치하면 abcdaX 가 매치된다.
+*? 
++?
+
+{n,}?
+
+{n,m}?
+
+이까지는 이해가 가는데
+
+?? 라는 표현도 있음.
+
+예를 들어 표현하면
+
+a??c 를 했을 때
+
+abc444ac 라는게 있다면 abc 를 찾는게 아니고 ac 를 찾음
+
+가능한한 짧은걸 찾음.
+
+ 
+
+Back references
+
+std::string s("apple banana");
+ std::tr1::regex rg("(.+) (.+)");
+ s = std::tr1::regex_replace(s,rg,std::string("$2 $1"));
+ cout << s << endl;
+
+결과값 : banana apple 
+매치하면서 썼던 문자집합을 $n 와 같은 표현으로 사용가능.
+
+﻿
+ 
+이스케이프 문자 
+
+같은 표현
+
+\d
+
+[0-9]
+
+\l
+
+소문자
+
+\s
+
+모든공백문자
+
+\u
+
+대문자
+
+\w
+
+대소문자와 밑줄을 포함하는 모든 영숫자 [a-zA-Z0-9_] 와 같음
+
+\h
+
+탭
+
+\v
+
+수직 탭
+
+\D
+
+[^0-9] 와 같음
+
+\L
+
+소문자를 제외한 것
+
+\S
+
+공백이 아닌 문자
+
+\U
+
+대문자를 제외한것
+
+\W
+
+[^a-zA-Z0-9_] 와 같음
+
+\H
+
+수평탭을 제외한 것
+
+\V
+
+수직탭을 제외한 것
