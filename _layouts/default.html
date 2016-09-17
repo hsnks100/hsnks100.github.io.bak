@@ -4,8 +4,38 @@
   {% include head.html %}
 
   <body>
+      <div class="wrapper">
+          <div class="header">
+              <div class="header-item">
+                  <div class="spoqa-logo-wrap">
+                      <a class="spoqa-logo" href="{{ base_path }}/"><img src="{{ base_path }}/images/logo.png" alt="Spoqa logo"></a>
+                      <a class="blog-title" href="{{ base_path }}/">기술 블로그</a>
+                  </div>
+                  <div class="nav">
+                      <input type="checkbox" id="toggle">
+                      <label for="toggle" class="toggle" onclick></label>
+                      <ul class="menu">
+                          <li><a class="
+                          {% if page.url == '/about.html' %}
+                          selected
+                          {% endif %} menu-about" href="{{ base_path }}/about.html">소개</a></li>
+                          <li><a class="
+                          {% if page.url != '/about.html' and page.url != '/jobs.html' %}
+                          selected
+                          {% endif %} menu-blog" href="{{ base_path }}/index.html">블로그</a></li>
+                          <li><a class="menu-github" href="https://github.com/spoqa">GitHub</a></li>
+                          {% if site.trawler_mode %}
+                          <li><a class="
+                          {% if page.url == '/jobs.html' %}
+                          selected
+                          {% endif %} menu-job" href="/jobs.html">채용정보</a></li>
+                          {% endif %}
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
 
-    {% include header.html %}
 
     <div class="page-content">
       <div class="wrapper">
