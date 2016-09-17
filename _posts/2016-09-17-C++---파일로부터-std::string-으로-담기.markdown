@@ -1,0 +1,20 @@
+---
+layout: post
+title: "C++ - 파일로부터 std::string 으로 담기"
+author: 코딩도사(hsnks100@gmail.com)
+date: 2016-09-17 08:49 +0900
+tags: c++ file input
+comments: true
+---
+* table of contents
+{:toc}
+
+``` cpp
+string ReadStringFromFile(string inputFile)
+{
+    return string((istreambuf_iterator<char>(ifstream(inputFile))),
+              (istreambuf_iterator<char>()));
+} 
+```
+
+파일 전체 내용을 string 으로 읽어오는 함수다.

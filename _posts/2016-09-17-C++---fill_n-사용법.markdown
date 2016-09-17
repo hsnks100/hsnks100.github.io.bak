@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Cn 사용법"
+author: 코딩도사(hsnks100@gmail.com)
+date: 2016-09-17 08:53 +0900
+tags: fill_n C++
+comments: true
+---
+* table of contents
+{:toc}
+
+
+``` cpp
+int testArray[10][10] = {0,};
+fill_n(*testArray, 4, 5);
+for(int i=0; i<10; i++){
+    for(int j=0; j<10; j++){
+        cout << testArray[i][j] << " ";
+    }
+    cout << endl;
+}
+fill_n(*testArray, 10*10, 5);
+for(int i=0; i<10; i++){
+    for(int j=0; j<10; j++){
+        cout << testArray[i][j] << " ";
+    }
+    cout << endl;
+}
+
+```
+만약 testArray 가
+>int testArray[10];
+
+로 선언되어있다면, 
+
+``` cpp
+fill_n(testArray, 10, value);
+```
+
+위와 같이 쓰면 된다. 배열 차수가 늘어갈 수록 * 만 덧붙이면 되는 셈.
+
