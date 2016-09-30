@@ -1,0 +1,168 @@
+---
+layout: post
+title: "acm"
+author: 코딩도사(hsnks100@gmail.com)
+date: 2016-10-01 06:30 +0900
+tags: 
+comments: true
+---
+* table of contents
+{:toc}
+
+
+```
+#include <bits/stdc++.h>
+  
+using namespace std;
+ 
+int V, E, S;
+ 
+struct Edge{
+  int to, cost;
+  Edge(int to, int cost){
+    this->to = to;
+    this->cost = cost;
+  }
+  bool operator<(const Edge& e) const{
+    return this->cost > e.cost;
+  }
+};
+vector<vector<Edge>> G;
+int main(){
+ 
+  cin >> V >> E >> S;
+ 
+  G = vector<vector<Edge>>(V + 1);
+ 
+  for(int i=1; i<=E; i++){
+    int a, b, cost;
+ 
+    scanf("%d %d %d", &a, &b, &cost);
+    G[a].emplace_back(b, cost); 
+  }
+ 
+  vector<int> dist(V + 1, numeric_limits<int>::max());
+  priority_queue<Edge> Q;
+  dist[S] = 0;
+  Q.emplace(S, 0);
+ 
+  while(Q.empty() == false){
+    auto p = Q.top();
+    Q.pop();
+ 
+    if(dist[p.to] < p.cost)
+      continue;
+ 
+    for(auto& e : G[p.to]){
+      // e : 뽑은 큐로부터 가고자 하는 곳.
+      if(dist[e.to] > dist[p.to] + e.cost){
+        dist[e.to] = dist[p.to] + e.cost;
+        Q.emplace(e.to,dist[p.to] + e.cost);
+      }
+    }
+  }
+ 
+  ostringstream oss;
+  for(int i=1; i<=V; i++){
+    if(dist[i] == numeric_limits<int>::max()){
+      oss << "INF" << endl;
+    }
+    else{
+      oss << dist[i] << endl;
+    }
+  } 
+  cout << oss.str();
+  return 0;
+}
+```
+위상정렬
+
+```
+void bfs()
+{
+    queue<int> q;
+    for(int i=1;i<=n;i++){
+        if(indegree[i] == 0){ // 현재 진입차수가 0인 점을 큐에 넣음
+            q.push(i);
+            ans.push_back(i);
+        }
+    }
+
+    while(!q.empty()){
+        int here = q.front();
+        q.pop();
+
+        for(int i=0;i<graph[here].size();i++){
+            int there = graph[here][i];
+            indegree[there]--; // 연결된 곳의 차수를 1씩 감소해준다.
+            if(indegree[there] == 0){  // 다시 0인 곳을 큐에 넣음
+                q.push(there);
+                ans.push_back(there);
+            }
+        }
+    }
+    
+}
+```
+
+이분매칭
+```
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int N, M;
+ 
+vector<int> graph[300];
+ 
+int backMatch[300];
+int visit[300]; 
+ 
+// dfs(s) : s 가 다른 선택권이 있으면 true
+int dfs(int s){
+    if(visit[s]) return false;
+    visit[s] = true; 
+ 
+    for(int i=0; i<graph[s].size(); i++){
+ 
+        int there = graph[s][i];
+        if(backMatch[there] == -1 || dfs(backMatch[there])){ 
+            backMatch[there] = s;
+            return true; 
+        }
+    }
+ 
+    return false;
+}
+int main(){
+    cin >> N >> M;
+ 
+    for(int i=1; i<=N; i++){
+        int chuksaCnt;
+        cin >> chuksaCnt;
+        for(int j=1; j<=chuksaCnt; j++){
+            int want;
+            cin >> want;
+            // i 번째 소가 want 축사에 들어가고 싶어한다.
+            graph[i].push_back(want);
+        }
+    }
+ 
+    int matchCnt = 0;
+    fill_n(backMatch, 300, -1);
+    for(int i=1; i<=N; i++){ 
+        fill_n(visit, 300, false);
+        if(dfs(i)){
+            matchCnt++; 
+        }
+    }
+    cout << matchCnt << endl;
+    return 0;
+}
+```
+```
+int gcd(int a, int b){
+  if(b == 0)
+    return a;
+  return gcd(b, a % b);
+}
+```
