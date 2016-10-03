@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "정규식(Regular Expression) 소개"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:55 +0900
 tags: 정규식 RegularExpression
 comments: true

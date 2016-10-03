@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C++ - 파일로부터 std::string 으로 담기"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:49 +0900
 tags: c++ file input
 comments: true

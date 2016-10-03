@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "32bit / 64bit well hash functions"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:51 +0900
 tags: hash
 comments: true

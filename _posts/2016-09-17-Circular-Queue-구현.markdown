@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Circular Queue 구현"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:46 +0900
 tags: Circular Queue
 comments: true

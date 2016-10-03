@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "이스케이프 문자와 기타 반복자"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 09:08 +0900
 tags: escape regex RegularExpression
 comments: true
