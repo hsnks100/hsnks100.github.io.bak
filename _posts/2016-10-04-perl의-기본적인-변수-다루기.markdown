@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "perl의 기본적인 변수 다루기"
+title: "perl의 기본적인 변수(reference, dereference) 다루기"
 author: 코딩도사(hsnks100@gmail.com)
 date: 2016-10-04 00:00 +0900
-tags: perl
+tags: perl, reference, dereference
 comments: true
 ---
 * table of contents
