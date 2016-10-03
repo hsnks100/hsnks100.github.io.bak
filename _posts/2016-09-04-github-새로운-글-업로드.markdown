@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "github 새로운 글 업로드"
-author: 코딩도사(hsnks100@gmail.com)
+author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-04 20:53 +0900
 tags: github post
 ---
