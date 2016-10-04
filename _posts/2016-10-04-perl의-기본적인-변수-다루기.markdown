@@ -119,8 +119,7 @@ array 와 hash 는 서로 변환이 가능하다. 앞서 보았던 코드를 보
 ``` perl
 @arr = ("ksoo", "gsoo");
 @values = (1, 2, 3, 4, 5);
-@arr[1] = @values;
-
+$arr[1] = @values; 
 ```
 
 위 코드의 의도했던 바는 
