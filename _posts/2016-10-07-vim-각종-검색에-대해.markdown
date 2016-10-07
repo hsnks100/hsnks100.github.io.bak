@@ -2,8 +2,9 @@
 layout: post
 title: "vim 각종 검색에 대해"
 author: 뻘짓마스터(hsnks100@gmail.com)
-date: 2016-10-07 22:02 +0900
+date: 2016-10-07 22:02 +0900 
 tags: vim search
+publish:false
 comments: true
 ---
 * table of contents
