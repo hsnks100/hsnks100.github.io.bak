@@ -5,7 +5,7 @@ rm -r tag
 rm -r _site/tag
 
 # build site
-jekyll build
+bundle exec jekyll build
 
 # copy tag
 cp -r _site/tag .
