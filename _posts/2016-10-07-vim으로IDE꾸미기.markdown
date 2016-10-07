@@ -9,6 +9,11 @@ comments: true
 * table of contents
 {:toc}
 
+
+## 기본 소양
+여기서는 vim 입문을 다루고 있는게 아니기 때문에 어느정도 vim plugin 이나 vim keymap 에 대해서는 설명을 하지 않는다.
+이미 vim 을 단순 에디터용도로만 즐겨 쓰고 있었지만, REPL(Read-Eval-Print Loop) 가 필요한 사람들을 대상으로 한다.
+
 ## VIM 으로 IDE 처럼 쓸 수 있다는데?  
 VIM 으로 IDE 처럼 구성할 수 있다. 하지만 VIM 이 범용에디터라는것을 감안해야한다. pycharm, visual studio 등등이 각 언어에 맞게 환경을 제공하니 만큼 거기에 따라 특화된 기능들이 당연히 많을 수 밖에 없게된다.
 하지만 VIM 유저가 VIM 을 떠나지 못하는 이유는 그 기능들이 쓸모 없어서도 아니고, 관심이 없어서도 아니다. 해당 IDE 들은 기능들이 아주 풍부한것을 대다수가 인정하지만 사용하는 언어나 도구에 따라 에디터를 바꿔야함에 신물이 나는걸것이다. 많은 에디터들이 vim-mode 를 지원하고 있지만 막상 vim 유저들이 써보면 쓰기 불편한것은 매한가지다.
@@ -22,9 +27,7 @@ vim 은 플러그인이 없으면 매우 쓰기 힘든 에디터다. vim 을 배
 ```
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Tagbar'
 ```
 
 ![](../images/vim_ide.png)
@@ -32,15 +35,106 @@ Plugin 'Tagbar'
 여기서 필요한 최소의 플러그인정도로 생각하면 된다.
 이까지 설치하면 vim 도 나름 모양을 갖춘 이쁜 에디터가 된다.
 
+## 컴파일형 언어 스크립트형 언어
+
+여기서는 말하는 컴파일은 스크립트형 언어는 바로 실행, 컴파일형 언어는 말 그대로 컴파일이 되게끔 구성을 하겠다.
+
+``` vim
+function! Kompile() 
+  let b:buildstr = ""
+  let l:ext = expand("%:e")
+  echo "call kompile"
+  if l:ext == "cpp" 
+    let b:buildstr = "g++ -std=c++11 -O2 ".expand("%:p")." -o ".expand("%<")
+  elseif  l:ext == "py"
+    let b:buildstr = "python ".expand("%:p")
+  elseif l:ext == "r"
+    let b:buildstr = "Rscript ".expand("%:p")
+  elseif l:ext == "pl"
+    let b:buildstr = "perl ".expand("%:p")
+  endif
+
+  if filereadable("input.txt")
+    let b:buildstr .= " < input.txt"
+  endif
+
+  let b:buildstr = substitute(b:buildstr, " ", "\\\\ ", "g")
+  echo b:buildstr
+  silent execute "setlocal makeprg=".b:buildstr
+  make
+  vertical botright copen
+endfunction 
+```
+
+어려운 스크립트가 아니라서 찬찬히 읽어보면 알겠지만 몇가지만 설명하면 먼저 expand 라는게 있는데 이건 현재 파일명에 대한 각종 포매팅을 할 수 있는 함수다.
+현재 /home/ksoo/main.cpp 을 편집하고 있을 때 expand 를 살펴보면..
+
+``` vim
+expand("%") " main.cpp..
+expand("%<") " main
+expand("%:p") "/home/ksoo/main.cpp
+expand("%:p:h") " /home/ksoo
+expand("%:n") "main.cpp 
+```
+좀 더 자세한 내용을 원하면 vim 에서 :help expand 쳐본다.
+
+그 밑에 각종 확장자에 따라 다른 컴파일 및 실행 명령어가 분기된다. 
+사실 나는 간단한 스크립트 언어를 짤 때 input.txt 를 stdin 으로 놓고 테스트하는 타입이라서 해당 디렉토리에 input.txt 이 있다면
+redirection 하는 코드를 한줄 넣는다. 이 부분은 안쓰면 빼도 된다.
+
+그리고 마지막으로 공백을 \\ 으로 치환하는 substitue 를 쓰고 make 하고 스크립트가 끝나게 된다.
+
+당장 저 함수만 만들고 임의의 cpp 파일을 생성하고 저장하고 
+>:call Kompile() 
+
+라고 치게 되면 바로 오른쪽 화면에 QuickFix 로 컴파일 결과가 나타나게 된다.  
 
 
 
+``` vim
+noremap <C-S-B> :wa<CR>:call Kompile()<CR><c-w>p
+```
+
+이 함수를 자기가 원하는 keymap 으로 설정하면 더욱 편하게 쓸 수 있다.
+
+
+[그림]
+perl 스크립트를 실행해본 모습
 
 
 
+## 실행하여 결과 리턴받기
+이미 위에서 스크립트형 언어는 위에서 결과를 리턴 받았을 것인데, 컴파일형 언어는 컴파일만 됐을 뿐,
+아무런 실행을 하지 못한 상태다.
 
 
+``` vim 
+function! Exekute()
+  execute "cexpr system(\"" . expand('%:p:r') . " <input.txt\")"
+  normal <CR>
+  vertical botright copen
+  "execute("vertical botright cope")
+  "  <CR>:cop<CR><C-w>p"
+endfunction
+```
 
-##
+그래서 위와 같은 실행 하는 함수를 정의하면 편하게 실행결과를 리턴 받을 수 있다.
 
+expand("%:p:r") 에 대해서 궁금하면 :echo expand("%:p:r") 을 vim 에 쳐보자.
+
+여기서 마찬가지로 마지막에 <input.txt 이 있는데 이건 기호에 맞게 빼주시고 사용하셔도 된다.  
+
+## 그 외
+
+이 문서에서는 vim 에서 컴파일 및 실행 결과에 대해서만 다뤘다. 이유는 이 부분이
+핵심이고 나머지 부분은 그냥 플러그인만 설치하면 되는 부분이라 그렇다.
+
+### NERDComment
+작성중
+
+### A.vim
+작성중
+
+### ctags 연동 
+작성중
 
