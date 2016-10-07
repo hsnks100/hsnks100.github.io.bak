@@ -98,7 +98,8 @@ noremap <C-S-B> :wa<CR>:call Kompile()<CR><c-w>p
 이 함수를 자기가 원하는 keymap 으로 설정하면 더욱 편하게 쓸 수 있다.
 
 
-[그림]
+![](../images/vim_perl.png)
+
 perl 스크립트를 실행해본 모습
 
 
