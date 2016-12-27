@@ -64,7 +64,25 @@ view 명령어로 위 처럼 welcome.blade.php 를 불러올  수 있다.
 blade 는 html template engine 의 이름이다.
 
 
+welcome.blade.php 
 
+``` php
+{{ $greeting }} 
+{{ $name }}
+```
+
+
+``` php
+Route::get('/', function () {
+
+    $view = view('welcome');
+    $view->greeting = "Hey~ What's up";
+    $view->name = 'everyone';
+});
+
+```
+
+일반적으로 위와 같은 패턴으로 쓴다.  
 
 
 # 
