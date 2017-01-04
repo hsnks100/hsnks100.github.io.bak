@@ -7,7 +7,7 @@ tags:
 comments: true
 ---
 
-
+<h2>
 The cost to join is relatively inexpensive and lasts for a full twelve months.
 
 Thanks to the hiring of four outside writers, workloads for the newspaper staff have been reduced.
@@ -49,3 +49,4 @@ expectant - 기대하는
 
 
 
+</h2>
