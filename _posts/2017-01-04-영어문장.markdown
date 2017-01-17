@@ -131,6 +131,10 @@ conjunction / abandon / harsh / resulting in ... /
 To appeal to high-class yet practical consumers, the online advertisement describes the timepiece as elegant and accurate.  
 anxiously / timepiece / alongside /  
 promptly notify the manager that the food I received was undercooked, and its charge should be removed from my bill.  
+```
+promptly notify the manager that (the food I received) was undercooked, and its charge should be removed from my bill.  
+notify S that ~~ : pattern.
+```
 
 
 
