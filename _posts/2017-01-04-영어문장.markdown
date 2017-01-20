@@ -20,26 +20,26 @@ The number of unique users visiting the website is an important indicator of its
 Despite beginning his career just over a year ago, Ralph Brown is already an important critic in the film industry. 
 
 
-namely - 다시 말해서  
-exceedingly - 대단히  
-conderably - 상당히  
-accordingly - 그에 따라서  
-suspension - 중지  
-affordable - 알맞은  
-invaluable - 유용한  
-contractor - 계약자  
-indicator - 지표  
-receptor - 수용기  
-operator - 전화 교환원  
-futher - 더 멀리  
-impulse - 충동  
-toxic - 독성이 있는  
-credit inquiry - 신용 조회  
-investigate - 조사하다  
-forward - 전달하다  
-alleged - 혐의를 받는  
-intentional - 고의로   
-expectant - 기대하는  
+namely - 
+exceedingly - 
+conderably - 
+accordingly - 
+suspension - 
+affordable - 
+invaluable - 
+contractor - 
+indicator - 
+receptor - 
+operator - 
+futher - 
+impulse - 
+toxic - 
+credit inquiry - 
+investigate - 
+forward - 
+alleged - 
+intentional - 
+expectant - 
 
 The company reward dedicated workers.  
 회사는 열성적인 직원을 포상했다.
@@ -64,13 +64,13 @@ I'm reluctant to do new games.
 
 I want to receive substantial pay raises.
 
-sustainable - 지속가능한
+sustainable -
 
 My english level is urgent situation.
 
-unfavorable - 호의적이지 않은
+unfavorable -
 
-versatile - 용도가 다양한
+versatile - 
 
 
 듣기 dictation
@@ -138,6 +138,27 @@ notify S that ~~ : pattern.
 
 cordially / ever / inherently / markedly / politely / prominently / somewhat / substantially / 
 tentatively / voluntarily
+
+A more in-depth look into the __extensively__ researched education study shows worrying trends not apprent in the headline.  
+
+In-depth look into Win32 PE is very important.  
+
+go into effect   
+In an apprent effort to provide more cultural oppotunities in the area,  
+
+have yet to 
+clerk will notify Ms.lofton of you presence.  
+
+distant / nominating / fatigue / stimulate / bids / envelope /  
+garments / boased / reliability / obligation / vacate /  
+thoroughly / redeem / extend(express) / engagement / obligation /  
+stylish / lastly / exceedingly / debate / advocated /  
+
+
+
+
+
+
 
 
 
