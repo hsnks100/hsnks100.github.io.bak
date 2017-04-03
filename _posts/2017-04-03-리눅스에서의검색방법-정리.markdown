@@ -1,0 +1,53 @@
+---
+layout: post
+title: "영어문장"
+author: 뻘짓마스터(hsnks100@gmail.com)
+date: 2017-01-04 21:29 +0900
+tags: 
+comments: true
+---
+
+
+# 파일 검색
+
+```
+find . -name "apple"
+```
+
+. 현재 위치로 부터 파일명이나 디렉토리명에 apple 이라는 글자가 포함된 것을 찾아줌.
+
+# 파일내 검색 
+
+```
+grep -r "def" ./
+```
+
+현재 위치로 부터 모든 파일내용에 대해 def 라는 글자가 들어가있는것을 찾아줌.
+
+여기서 "" 안에 있는 찾는 문자열은 정규식을 사용할 수가 있음.  
+
+예를 들어 
+
+```
+grep -r "def?" ./
+[$] grep -r "ve.tor" ./ 
+./secure/sbox_aes.py:def bin2vector(b):
+./secure/sbox_aes.py:    return vector(v)
+./secure/sbox_aes.py:    vectorInv = bin2vector(inv).row().transpose()
+./secure/sbox_aes.py:    c = vector([1, 1, 0, 0, 0, 1, 1, 0]).row().transpose()
+./secure/sbox_aes.py:    result = A * vectorInv + c 
+
+``` 
+
+# vim 에서의 검색방법 
+
+vim 을 쓰다보면 별도의 터미널로 나가지 않고 찾고 싶을 때가 있다.
+
+## 내장 사용법
+
+
+## 외장 플러그인을 이용
+
+
+
+
