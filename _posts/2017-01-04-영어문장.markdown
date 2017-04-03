@@ -20,26 +20,26 @@ The number of unique users visiting the website is an important indicator of its
 Despite beginning his career just over a year ago, Ralph Brown is already an important critic in the film industry. 
 
 
-namely - 다시 말해서  
-exceedingly - 대단히  
-conderably - 상당히  
-accordingly - 그에 따라서  
-suspension - 중지  
-affordable - 알맞은  
-invaluable - 유용한  
-contractor - 계약자  
-indicator - 지표  
-receptor - 수용기  
-operator - 전화 교환원  
-futher - 더 멀리  
-impulse - 충동  
-toxic - 독성이 있는  
-credit inquiry - 신용 조회  
-investigate - 조사하다  
-forward - 전달하다  
-alleged - 혐의를 받는  
-intentional - 고의로   
-expectant - 기대하는  
+namely - 
+exceedingly - 
+conderably - 
+accordingly - 
+suspension - 
+affordable - 
+invaluable - 
+contractor - 
+indicator - 
+receptor - 
+operator - 
+futher - 
+impulse - 
+toxic - 
+credit inquiry - 
+investigate - 
+forward - 
+alleged - 
+intentional - 
+expectant - 
 
 The company reward dedicated workers.  
 회사는 열성적인 직원을 포상했다.
@@ -64,13 +64,13 @@ I'm reluctant to do new games.
 
 I want to receive substantial pay raises.
 
-sustainable - 지속가능한
+sustainable -
 
 My english level is urgent situation.
 
-unfavorable - 호의적이지 않은
+unfavorable -
 
-versatile - 용도가 다양한
+versatile - 
 
 
 듣기 dictation
@@ -92,6 +92,98 @@ This is second consecutive case that i've lost.
 I have a lot of experience in delicate business.
 I am demanding human when I am doing 3c.  
 I'm eager to get toeic xxxx points.  
+
+what i like is baseball.  
+this is what makes me sad.
+what i ate yesterday was pasta.  
+
+A city where he was born is beijing.  
+I remember  the day when we met.   
+He knows the reason why she was late.  
+the way he writes english is weird.  
+
+
+do you know reason why he is crying?  
+
+everybody glances the lady with whom I date.  
+everybody glances the lady whom I date with.  
+everybody glances the lady I date with.  
+
+whatever   (~하는 것은 무엇이나)
+whoever   (~하는 누구나)
+whomever (~하는 누구나)
+whichever (~하는 어느 것이나)
+
+  ex) Whatever you do, I'm on your side.  
+  ex) I will love whoever will love me.  
+  ex) I will devote myself whomever I love.  
+  ex) My darling, you can have whichever you choose.  
+
+
+today word.  
+intention / admission / patron / argue / disguise / cleverly / develop /  
+hazard / obesity / attribute / omit / inadvertently / dedicated / ensure(use grammer) /  
+sustainably / perceptible / deducted / influenced / affected / considered /  
+juncture / gretefully / means / wasteful / perishable / reluctant / nominate /  
+prestigious / which left the staff felling invigorated /  
+intricate / flocked / flea market / in search of ?? / alignment /  
+conjunction / abandon / harsh / resulting in ... /  
+To appeal to high-class yet practical consumers, the online advertisement describes the timepiece as elegant and accurate.  
+anxiously / timepiece / alongside /  
+promptly notify the manager that the food I received was undercooked, and its charge should be removed from my bill.  
+```
+promptly notify the manager that (the food I received) was undercooked, and its charge should be removed from my bill.  
+notify S that ~~ : pattern.
+```
+
+cordially / ever / inherently / markedly / politely / prominently / somewhat / substantially / 
+tentatively / voluntarily
+
+A more in-depth look into the __extensively__ researched education study shows worrying trends not apprent in the headline.  
+
+In-depth look into Win32 PE is very important.  
+
+go into effect   
+In an apprent effort to provide more cultural oppotunities in the area,  
+
+have yet to 
+clerk will notify Ms.lofton of you presence.  
+
+distant / nominating / fatigue / stimulate / bids / envelope /  
+garments / boased / reliability / obligation / vacate /  
+thoroughly / redeem / extend(express) / engagement / obligation /  
+stylish / lastly / exceedingly / debate / advocated /  
+
+bureau / grant / affluent / recess / sustain /  
+buffet / features[v] / on behalf of Spruce Web Hosting /  
+wear[v] / conform / quality control / overly / reimbursement /  
+
+Our shipping team will send the ordre to the address listed in your membership profile, unless instructed to do detailed.  
+The unique chip design has been passed by quality control and the manufacturing process is expected to be perfected __shortly__  
+
+higher rate / ballet / turnout / feasible / vague / expenditure / feasibility /  
+affirmation / endownment / accounts / lay off / 
+
+I recommend using the printer on the 4th floor, because this one seems about to break down.  
+A group of volunteers native to the area will be giving tours of the national park every weekend in the month of August.  
+I has made Ms.mintz aware of fundamental problems.  
+A company reserves the right to make adjustment to policy.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
