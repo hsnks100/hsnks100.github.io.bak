@@ -41,20 +41,68 @@ grep -r "def?" ./
 
 # vim 에서의 검색방법 
 
+## 내장 사용법
 vim 을 쓰다보면 별도의 터미널로 나가지 않고 찾고 싶을 때가 있다.
 
 ```
-:vimgrep /regex// % 
+:vimgrep /html/ **
+:copen
 ```
 
-위와 같이 타이핑을 하면 현재로부터 
+자세한건 :help vimgrep, 그 뒤에 ** 에 대해서 자세히 알고 싶다면 :wildcard 를 쳐보자.  
 
+:copen 을 하면 quickfix list 에 찾은 내용에 대해서 
 
-## 내장 사용법
+```
+//Gemfile.lock|52 col 5| html-pipeline (2.4.2)
+//Gemfile.lock|76 col 7| html-pipeline (~> 2.3)
+//Gemfile.lock|91 col 7| html-pipeline (~> 2.2)
+//_config.yml|61 col 47| permalink:     /post/:year-:month-:day-:title.html
+//_includes/footer.html|19 col 36| {% include icon-github.html username=site.github_username %}
+//_includes/footer.html|25 col 37| {% include icon-twitter.html username=site.twitter_username %}
+//_includes/head.html|7 col 82| <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+``` 
+위와 같이 결과가 뜬다.  
 
 ## 외장 플러그인을 이용
 
+외장 플러그인을 이용하는 방법도 있다. 외장 플러그인은 내장된 vimgrep 보다 더 빠르다.
+
+각자의 Plugin Manager 에 맞게 grep.vim 을 설치한다. 저 같은 경우엔 Bundle Plugin 을 쓰니까 Plugin 'grep.vim'
+
+:BundleInstall
+
+``` 
+The above commands can be invoked like this: 
+
+   :Grep   [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Rgrep  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Fgrep  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Rfgrep [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Egrep  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Regrep [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Agrep  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :Ragrep [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+
+   :GrepAdd   [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :RgrepAdd  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :FgrepAdd  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :RfgrepAdd [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :EgrepAdd  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :RegrepAdd [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+   :AgrepAdd  [<grep_options>] [<search_pattern> [<file_name(s)>]] 
+```
+
+Grep 이 제공하는 명령어 셋인데 
+```
+:Grep html ** 
+:Grep -i html **
+```
+
+이렇게 타이핑 하면 마찬가지로 quickfix 에 해당하는 내용이 뜬다. 
+
+혹은 :Grep 만 치고 명령 프롬프트형식으로 이용해도 된다.  
 
 
 
