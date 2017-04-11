@@ -1,0 +1,98 @@
+---
+layout: post
+title: "numpy1"
+author: 뻘짓마스터(hsnks100@gmail.com)
+tags: 
+comments: true
+---
+
+* table of contents
+{:toc}
+
+# The Basics
+
+Numpy 의 주요한 목적은 다차원 배열을 처리하는것이다. 차원을 일종의 Rank 라고 한다.  
+
+Numpy 의 array 는 ndarray 다. 이건 일반적인 python 의 array 와는 다르다. 근데 python 의 array 는 1차원적인 array 를 다루기에 적합하다.
+
+# Properties
+
+[[[ 0.,  0.,  0.,  0.],
+      [ 0.,  0.,  0.,  0.],
+      [ 0.,  0.,  0.,  0.]],
+
+     [[ 0.,  0.,  0.,  0.],
+      [ 0.,  0.,  0.,  0.],
+      [ 0.,  0.,  0.,  0.]]]
+## ndarray.ndim
+array 의 dimensions 을 반환한다.
+dimension 은 얼마나 배열이 중첩되어있냐를 나타내는 것이다.
+
+t = np.array([1,2,3]).ndim => 1  
+t = np.array([[1,2,3], [1,2,3]]).ndim => 2  
+t = np.array([[[1,2,3], [1,2,3]]]).ndim => 3  
+
+## ndarray.shape
+
+``` python
+>>> np.zeros((2,3,4))
+array([[[ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.]],
+
+       [[ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.],
+        [ 0.,  0.,  0.,  0.]]])
+>>> np.zeros((2,3,4)).shape
+(2, 3, 4)
+>>> np.zeros((2,3))
+array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]])
+>>> np.zeros((2,3)).shape
+(2, 3)
+>>> 
+```
+
+위와 같이 array 의 요소별 크기를 나타낸다.
+
+
+## ndarray.size
+
+``` python
+>>> np.zeros((2,3))
+array([[ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]])
+>>> np.zeros((2,3)).size
+6
+```
+
+element 의 모든 개수를 반환한다.
+## ndarray.dtype
+
+``` python
+>>> np.zeros((2, 3)).dtype 
+dtype('float64')
+```
+
+요소의 타입을 반환한다.
+
+## ndarray.itemsize
+
+한 요소의 byte size 를 반환한다. 이는 dtype 에 의존한다.
+
+## ndarray.data
+
+array 의 실제 array 에 접근할 수 있게 해준다. 하지만 직접 엑세스 할일은 없을것이다.
+
+## np.array 기타 선언 방법
+
+``` python
+>>> c = np.array([[1,2],[3,4]])
+>>> c = np.array([[1,2],[3,4]], dtype=complex)
+>>> c
+array([[ 1.+0.j,  2.+0.j],
+       [ 3.+0.j,  4.+0.j]])
+
+```
+
+

@@ -1,0 +1,59 @@
+---
+layout: post
+title: "numpy2 Basic Operation"
+author: 뻘짓마스터(hsnks100@gmail.com)
+tags: 
+comments: true
+---
+
+* table of contents
+{:toc}
+
+# Basic Operation
+
+``` python
+
+>>> a = np.array( [20,30,40,50] )
+>>> b = np.arange( 4 )
+>>> b
+array([0, 1, 2, 3])
+>>> c = a-b
+>>> c
+array([20, 29, 38, 47])
+>>> b**2
+array([0, 1, 4, 9])
+>>> 10*np.sin(a)
+array([ 9.12945251, -9.88031624,  7.4511316 , -2.62374854])
+>>> a<35
+array([ True, True, False, False], dtype=bool)
+```
+
+# Matrix Operation
+
+
+``` python
+>>> A = np.array( [ [1,2], [3,4] ] )
+>>> B = np.array( [ [3, 4], [5, 6] ] )
+>>> A*B
+array([[ 3,  8],
+       [15, 24]])
+>>> A.dot(B)
+array([[13, 16],
+       [29, 36]])
+
+```
+
+A*B 연산은 각 요소별로 곱을 한다.  
+A.dot(B) 를 하면 일반적인 matrix 곱을 수행한다.  
+
++= 나 *= 도 마찬가지로 일반적인 동작으로 수행된다.
+
+# 
+
+
+
+
+
+
+
+
