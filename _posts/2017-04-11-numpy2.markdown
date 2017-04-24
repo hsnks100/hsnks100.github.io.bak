@@ -28,6 +28,16 @@ array([ 9.12945251, -9.88031624,  7.4511316 , -2.62374854])
 array([ True, True, False, False], dtype=bool)
 ```
 
+다양한 array 생성 방법
+
+``` python
+>>> np.random.random((2, 3))
+array([[ 0.1499019 ,  0.07960461,  0.56426276],
+       [ 0.07032358,  0.61186625,  0.08919773]])
+```
+random 생성
+
+
 # Matrix Operation
 
 
@@ -48,7 +58,14 @@ A.dot(B) 를 하면 일반적인 matrix 곱을 수행한다.
 
 += 나 *= 도 마찬가지로 일반적인 동작으로 수행된다.
 
-# 
+
+# indexing, slicing
+
+일반적인 python 의 배열 연산자랑 정확히 동일하다. [2:6], [::-1] 등으로 쓰면 된다.
+
+특정 연산을 위해 python 의 기본 functional programming 도 가능하다. 
+
+
 
 
 
