@@ -1,0 +1,97 @@
+---
+layout: post
+title: "javascript 에서의 객체지향"
+author: 뻘짓마스터(hsnks100@gmail.com)
+tags: 
+comments: true
+---
+
+* table of contents
+{:toc}
+
+# 가장 기초적인 방법 (Object 활용)
+``` js
+var obj = new Object();
+obj.name = "ksoo";
+obj.method = function(){
+    return 33;
+} 
+
+console.print(obj.name);
+console.print(obj.method());
+```
+
+출력결과
+```
+ksoo
+33
+```
+
+# 일반적인 function 객체를 이용하는 방법
+``` js 
+// 일반적
+function MyObject(){
+    var name = "var name";
+    this.name = "this name"; 
+};
+
+var ins = new MyObject();
+console.log(ins.name);
+```
+
+출력결과
+```
+this name
+```
+
+이 처럼 function 내에서 속성을 정의하기 위해서는 this. 로 접근을 해야한다.
+var 는 local 변수에 지나지 않는다.
+
+
+
+# 객체의 상속을 이용하는 방법
+
+``` js
+
+var Animal = function(sex){
+    if (arguments.length == 1){
+        this.sex = sex;
+    }
+};
+
+var Cat = function(name){
+    this.name = name;
+};
+Cat.prototype = new Animal();
+
+var Dog = function(name){
+    this.name = name;
+};
+Dog.prototype = new Animal();
+
+var danbi = new Cat("단비");
+var sundol = new Dog("순돌");
+
+console.log(danbi.name);
+console.log(sundol.name); 
+```
+
+출력결과
+```
+단비
+순돌
+```
+
+prototype = new ... 부분이 상속을 받는 부분이다.  
+아마 기존의 java 나 C++ 을 이용하던 사람들은 이 부분이 조금 어색할 것이다.  
+하지만 그냥 다른 문법이다 생각하고 쓰시면 됩니다.  
+
+예제에서는 객체의 속성의 관점에서만 이야기를 했는데, this.adder = function(a, b){ return a + b;}; 이런식으로 속성 뿐만 아니라  
+메소드도 추가 해서 쓸 수 있다.  
+
+물론 각종 private, protected, public 과 같은 접근 제한자는 존재하지 않는다.  
+
+
+
+
+
