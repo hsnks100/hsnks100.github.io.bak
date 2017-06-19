@@ -4,6 +4,7 @@ title: "vim으로IDE꾸미기"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-10-07 20:35 +0900
 tags: vim IDE build compile run
+category: vim
 comments: true
 ---
 * table of contents

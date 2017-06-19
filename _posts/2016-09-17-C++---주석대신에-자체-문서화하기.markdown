@@ -4,6 +4,7 @@ title: "C++ - 주석대신에 자체 문서화하기"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 07:51 +0900
 tags: c++ documenting
+category: cpp
 comments: true
 ---
 * table of contents

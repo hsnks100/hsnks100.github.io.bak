@@ -4,6 +4,7 @@ title: "perl의 기본적인 변수(reference, dereference) 다루기"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-10-04 00:00 +0900
 tags: perl reference dereference
+category: perl
 comments: true
 ---
 * table of contents
