@@ -4,6 +4,7 @@ title: "32bit / 64bit well hash functions"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:51 +0900
 tags: hash
+category: cpp
 comments: true
 ---
 * table of contents

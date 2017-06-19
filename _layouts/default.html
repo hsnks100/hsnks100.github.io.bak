@@ -4,41 +4,35 @@
   {% include head.html %}
 
   <body>
-      <div class="wrapper">
-          <div class="header">
-              <div class="header-item">
-                  <div class="spoqa-logo-wrap">
-                      <a class="blog-title" href="{{ base_path }}/">뻘짓마스터의 공간</a>
-                  </div>
-                  <div class="nav">
-                      <input type="checkbox" id="toggle">
-                      <label for="toggle" class="toggle" onclick></label>
-                      <ul class="menu">
-                          <li><a class="
-                          {% if page.url == '/about.html' %}
-                          selected
-                          {% endif %} menu-about" href="{{ base_path }}/about/">소개</a></li>
-                          <li><a class="
-                          {% if page.url != '/about.html' and page.url != '/jobs.html' %}
-                          selected
-                          {% endif %} menu-blog" href="{{ base_path }}/">블로그</a></li>
-                      </ul>
-                  </div>
+      <!-- Static navbar -->
+      <div class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html">CODINGDOSA</a>
               </div>
-          </div>
-          <div class="content">
-              {{ content }}
-          </div>
-          <div class="push">
-          </div>
-          {% include footer.html %}
-          <div class="footer">
-              <div id="info">
-                  <span>© <a href="http://dodopoint.com/">Spoqa</a> Inc. All rights reserved.</span>
-                  <span>Powered by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+              <div class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li>
+                          <a href="{{ base_path | append : 'about' }}">About</a>
+                      </li>
+                      {% include category.html %}
+                  </ul>
               </div>
+              <!--/.nav-collapse -->
           </div>
       </div>
+      <!-- +++++ Welcome Section +++++ -->
+      <div id="ww">
+          <!-- /container -->
+          {{ content }}
+      </div>
+      <!-- /ww -->
+      {% include footer.html %}
 
 
 
