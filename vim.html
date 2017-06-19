@@ -1,79 +1,22 @@
 ---
-layout: 
+layout: default2
 ---
 {% assign base_path = site.baseurl %}
 
-<!DOCTYPE html>
-<html lang="en">
-    {% include head.html %}
-    <body>
-        <!-- Static navbar -->
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">STANLEY</a>
+<!-- /row -->
+{% for post in paginator.posts %}
+    {% if post.publish != false %}
+        <div class="row">
+            {% if post.author %}
+                <div class="col-lg-8 col-lg-offset-2 centered">
+                    <h2 class="post-title"><a href="{{ post.url }}"><span class="post-title-words">{{ post.title }}</span></a></h2>
+                    <p class="post-description">{{ post.description }}</p>
+                    <span class="post-date">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
+                    <span class="sep">|</span>
+                    <span class="author-name">{{post.author}}</span>  
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="{{ base_path | append : 'work.html' }}">Work</a>
-                        </li>
-                        <li>
-                            <a href="{{ base_path | append : 'about.html' }}">About</a>
-                        </li>
-                        <li>
-                            <a href="{{ base_path | append : 'blog.html' }}">Blog</a>
-                        </li>
-                        <li>
-                            <a href="{{ base_path | append : 'contact.html' }}">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </div>
-        <!-- +++++ Welcome Section +++++ -->
-        <div id="ww">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 centered">
-                        <img src="{{ base_path | append : 'assets/img/user.png' }}" alt="Stanley">
-                        <h1>Hi, I am Stanley!</h1>
-                        <p>Hello everybody. I'm Stanley, a free handsome bootstrap theme coded by BlackTie.co. A really simple theme for those wanting to showcase their work with a cute &clean style.</p>
-                        <p>
-                            Please, consider to register to <a href="http://eepurl.com/IcgkX">our newsletter</a>
-                            to be updated with our latest themes and freebies. Like always, you can use this theme in any project freely. Share it with your friends.
-                        </p>
-                    </div>
-                    <!-- /col-lg-8 -->
-                </div>
-                <!-- /row -->
-                {% for post in paginator.posts %}
-                    {% if post.publish != false %}
-                        <div class="row">
-                            {% if post.author %} 
-                                <div class="col-lg-8 col-lg-offset-2 centered">
-                                    <h2 class="post-title"><a href="{{ post.url }}"><span class="post-title-words">{{ post.title }}</span></a></h2>
-                                    <p class="post-description">{{ post.description }}</p>
-                                    <span class="post-date">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
-                                    <span class="sep">|</span>
-                                    <span class="author-name">{{post.author}}</span>  
-                                </div>
-                            {% endif %} 
-                        </div> 
-                        <div style="clear: both;"></div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /ww -->
-        {% include footer.html %}
-
-    </body>
-</html>
+            {% endif %} 
+        </div> 
+        <div style="clear: both;"></div>
+    {% endif %}
+{% endfor %}
