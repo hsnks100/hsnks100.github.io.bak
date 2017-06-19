@@ -47,7 +47,7 @@ gems:
 - jekyll-paginate
 
 # Conversion
-markdown:    kramdown
+markdown:    maruku
 lsi:         false
 excerpt_separator: "\n\n"
 
@@ -55,7 +55,7 @@ excerpt_separator: "\n\n"
 detach:  false
 port:    4000
 host:   0.0.0.0
-baseurl: "" # does not include hostname
+baseurl: "/" # does not include hostname
 
 # Outputting
 permalink:     /post/:year-:month-:day-:title.html
@@ -66,14 +66,14 @@ quiet:         true
 defaults:      []
 
 # Markdown Processors
-kramdown:
-  auto_ids:       true
-  footnote_nr:    1
-  entity_output:  as_char
-  toc_levels:     2..3
-  enable_coderay: false
-  smart_quotes: ["apos", "apos", "quot", "quot"]
-  syntax_highlighter: rouge
+# kramdown:
+  # auto_ids:       true
+  # footnote_nr:    1
+  # entity_output:  as_char
+  # toc_levels:     2..3
+  # enable_coderay: false
+  # smart_quotes: ["apos", "apos", "quot", "quot"]
+  # syntax_highlighter: rouge
 
 
 highlighter: rouge
