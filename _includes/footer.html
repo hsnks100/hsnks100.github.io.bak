@@ -1,38 +1,36 @@
-<footer class="site-footer">
+<!-- +++++ Footer Section +++++ -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>My Bunker</h4>
+                <p>
+                    Some Address 987,<br/>
+                    +34 9054 5455, <br/>Madrid, Spain.
 
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
+                </p>
+            </div>
+            <!-- /col-lg-4 -->
+            <div class="col-lg-4">
+                <h4>My Links</h4>
+                <p>
+                    <a href="#">Dribbble</a>
+                    <br/>
+                    <a href="#">Twitter</a>
+                    <br/>
+                    <a href="#">Facebook</a>
+                </p>
+            </div>
+            <!-- /col-lg-4 -->
+            <div class="col-lg-4">
+                <h4>About Stanley</h4>
+                <p>This cute theme was created to showcase your work in a simple way. Use it wisely.</p>
+            </div>
+            <!-- /col-lg-4 -->
+        </div>
     </div>
-
-  </div>
-
-</footer>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ base_path | append : '/js/bootstrap.min.js' }}"></script>
