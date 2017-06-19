@@ -1,6 +1,6 @@
     {% assign categories = site.categories | sort %}
+    {% assign url = site.baseurl | append : '/' %}
     {% for category in categories %}
-        {% assign url = site.baseurl | append : '/' %}
         <li>
             <a href="{{url | append:category[0] }}">
                 {{ category[0] | replace:'-', ' ' }} ({{ category | last | size }})

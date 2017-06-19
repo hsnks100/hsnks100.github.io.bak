@@ -55,7 +55,7 @@ excerpt_separator: "\n\n"
 detach:  false
 port:    4000
 host:   0.0.0.0
-baseurl: "/" # does not include hostname
+baseurl: "" # does not include hostname
 
 # Outputting
 permalink:     /post/:year-:month-:day-:title.html
