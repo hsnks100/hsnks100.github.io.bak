@@ -47,7 +47,7 @@ gems:
 - jekyll-paginate
 
 # Conversion
-markdown:    maruku
+markdown:    kramdown
 lsi:         false
 excerpt_separator: "\n\n"
 
@@ -66,14 +66,14 @@ quiet:         true
 defaults:      []
 
 # Markdown Processors
-# kramdown:
-  # auto_ids:       true
-  # footnote_nr:    1
-  # entity_output:  as_char
-  # toc_levels:     2..3
-  # enable_coderay: false
-  # smart_quotes: ["apos", "apos", "quot", "quot"]
-  # syntax_highlighter: rouge
+kramdown:
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     2..3
+  enable_coderay: false
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  syntax_highlighter: rouge
 
 
 highlighter: rouge
