@@ -74,6 +74,8 @@ kramdown:
   enable_coderay: false
   smart_quotes: ["apos", "apos", "quot", "quot"]
   syntax_highlighter: rouge
+  input: GFM
+
 
 
 # highlighter: rouge
