@@ -1,4 +1,3 @@
-<div>
     {% assign categories = site.categories | sort %}
     {% for category in categories %}
         {% assign url = site.baseurl | append : '/' %}
@@ -8,6 +7,4 @@
             </a>
         </li>
     {% endfor %}
-</div>
-<hr />
 
