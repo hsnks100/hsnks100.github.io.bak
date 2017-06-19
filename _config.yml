@@ -59,7 +59,7 @@ baseurl: "" # does not include hostname
 
 # Outputting
 permalink:     /post/:year-:month-:day-:title.html
-paginate:      100
+paginate:      10
 paginate_path: "/page:num"
 timezone:      "Asia/Seoul"
 quiet:         true
