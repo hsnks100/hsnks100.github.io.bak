@@ -1,17 +1,17 @@
 ---
 layout: default
 ---
-<div class="tag">
+<div class="container">
   <h1 class="page-heading">태그: {{ page.tag }}</h1>
   {% if site.tags[page.tag] %}
-    <ul class="post-list">
+    <div class="row">
       {% for post in site.tags[page.tag] %}
-        <li>
+        <div class="col-lg-8 col-lg-offset-2 centered">
           <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
           <h2><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-        </li>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
   {% else %}
     <p>해당하는 글 없음</p>
   {% endif %}
