@@ -3,6 +3,7 @@ layout: post
 title: "numpy2 Basic Operation"
 author: 뻘짓마스터(hsnks100@gmail.com)
 tags: 
+category: python
 comments: true
 ---
 

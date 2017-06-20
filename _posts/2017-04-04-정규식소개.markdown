@@ -4,6 +4,7 @@ title: "정규식에 대해서 소개"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2017-04-04 21:29 +0900
 tags: 
+category: programming
 comments: true
 ---
 

@@ -4,6 +4,7 @@ title: "정규식 입문"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 08:57 +0900
 tags: 정규식 RegularExpression
+category: programming
 comments: true
 ---
 * table of contents

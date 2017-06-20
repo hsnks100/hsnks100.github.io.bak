@@ -4,6 +4,7 @@ title: "해더파일은 적당히 나눠야 한다"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-09-17 07:31 +0900
 tags: c++
+category: cpp
 comments: true
 ---
 * table of contents

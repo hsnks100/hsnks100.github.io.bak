@@ -4,6 +4,7 @@ title: "라라벨체험기"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2016-12-26 22:12 +0900
 tags: laravel php
+category: linux
 comments: true
 ---
 * table of contents

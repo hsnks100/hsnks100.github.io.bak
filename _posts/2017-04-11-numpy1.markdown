@@ -3,6 +3,7 @@ layout: post
 title: "numpy1"
 author: 뻘짓마스터(hsnks100@gmail.com)
 tags: 
+category: python
 comments: true
 ---
 
