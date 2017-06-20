@@ -3,7 +3,7 @@
     {% for category in categories %}
         <li>
             <a href="{{url | append:category[0] }}">
-                {{ category[0] | replace:'-', ' ' | replace: 'CPP', 'C++' | replace: 'javascript', '자바스크립트'}} ({{ category | last | size }})
+                {{ category[0] | replace:'-', ' ' | replace: 'CPP', 'C++' | replace: 'javascript', '자바스크립트' | replace: 'perl', '펄'}} ({{ category | last | size }})
             </a>
         </li>
     {% endfor %}
