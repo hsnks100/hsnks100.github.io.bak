@@ -112,10 +112,44 @@ nnoremap <leader>feR :source ~/.vimrc<CR>
 
 # options
 
+Vim 은 어떻게 동착할지에 대한 많은 옵션을 가지고 있다.
+
+대부분 옵션들은 on/off 식으로 작동하게 되는데 :set XXX, :set noXXX 식으로 XXX 에 대한 사항을 toggle 할 수 있다.
+
+```
+:set number 
+:set nonumber
+```
+둘다 vim 에 쳐보면 알 수 있다.
+
+이미 vim 에 익숙한 사용자라면 잘 알겠지만 postfix 로 붙는 ? 과 ! 에 대해서도 알아둬야 한다.  
+
+```
+:set number!
+```
+
+on/off 토글하기 위해서는 ! 를 붙인다.
+
+현재 상태를 확인하기 위해서는 
+
+```
+:set number?
+```
+
+끝에 ? 를 붙인다.
 
 
+# Basic Mapping
 
+# Modal Mapping
 
+# Strict Mapping
+
+# Leaders
+
+# Load Script
+
+# Abbreviations
 
 
 
