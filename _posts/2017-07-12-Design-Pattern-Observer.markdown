@@ -4,6 +4,7 @@ title: "Design Pattern Observer"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2017-07-12 14:46 +0900
 tags: observer design pattern
+category: programming
 comments: true
 ---
 * table of contents

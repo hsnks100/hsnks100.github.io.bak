@@ -4,6 +4,7 @@ title: "Design Pattern Strategy"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2017-07-12 14:11 +0900
 tags: strategy design pattern
+category: programming
 comments: true
 ---
 * table of contents
