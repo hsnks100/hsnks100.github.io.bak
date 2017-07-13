@@ -4,14 +4,15 @@ title: "Learn VimScript"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2017-07-11 20:24 +0900
 tags: vim script plugin
-omments: true
+comments: true
 ---
 
-Vim Script 를 배워봅시다.
 
 
 * table of contents
 {:toc}
+
+Vim Script 를 배워봅시다.
 
 # VimScript 
 이 페이지는 vim 사용법을 알려주는 페이지는 아니다. 좀 더 vim 고급 사용자로 가기 위해서 vim-script 를 배우는 페이지다.
