@@ -191,10 +191,138 @@ vim 은 _ 를 입력받아서 x 를 타이핑하게 하고, 또 vim 은 x 는 dd
 라고 해보고 아까 했던 행동을 해보자.  
 
 # Leaders
+앞에서 정했 듯 
+
+```
+:nnoremap x dd 
+```
+라고 정의하고 x 를 누르면 dd 가 실행되는 것을 알 수 있었다. 하지만 이러한 매핑은 기본동작을 바꾸는 좋지 않은 행동이다.
+
+그래서 
+```
+:nnnoremap -x dd
+```
+
+처럼 - 와 같은 접두사(prefix) 를 붙여서 이러한 동작을 지원해 줄 수 있다. 
+
+하지만 사용자가 이미 -x 와 같은 명령어를 개인적으로 매핑해서 쓴다면 해결할 방법이 없어진다. 
+
+사용자가 직접 찾아서 플러그인의 매핑된 코드를 바꿔야 한다. 
+
+이 때 leader key 를 쓰면 사용자가 매핑한 leader key 기준으로 매핑을 할 수 있다.
+
+```
+:let mapleader = ","
+:nnoremap <leader>x dd
+```
+
+후에 ,x 라고 쳐보자.
+
+이러한 leader key 의 장점은 사용자가 원하는 키로 매핑을 일괄적으로 변경할 수 있다는 점이다.
+
+local 하에서 leader key 를 지정하고 싶다면 
+```
+:help maplocalleader
+```
+
+를 통해 공부하자.
+
+
+
 
 # Load Script
 
-# Abbreviations
+자신이 만드는 스크립트는 앞서 설명했 듯 $MYVIMRC 경로에 저장해놓으면 vim 을 재시작할 때 불러온다고 했다.
+
+그 경로는 :echo $MYVIMRC 를 통해 경로를 알 수 있었다. 
+
+하지만 매번 스크립트를 불러올 때, $MYVIMRC 혹은 ~/.vimrc 를 입력하기엔 고통이 따른다.
+
+우리는 키매핑을 배웠기 때문에 다음과 같이 매핑을 한다.
+
+```
+:nnoremap <leader>fed :source $MYVIMRC<cr>
+```
+
+자기가 편한 키배열로 세팅을 하면 된다.
+
+그리고 .vimrc 를 편집하고 저장하고, :source % 를 입력하면 스크립트를 다시 불러온다.
+
+(여기서 % 는 현재 파일을 가리키는 특별한 문자)
+
+여기서 :source % 또한 키매핑으로 다음과 같이
+
+```
+:nnoremap <leader>feR :source $MYVIMRC<cr>
+```
+
+할 수 있다. 하지만 이 방법도 저장하고 매번 타이핑 해야한다.
+
+아직 배우지 않았지만 autocmd 를 이용하여 다음과 같이 설정할 수 있다.
+
+``` 
+augroup filetype_vim
+  autocmd!
+  autocmd BufWritePost *.vimrc,*.vim source $MYVIMRC
+augroup END 
+```
+
+위 코드를 자신의 $MYVIMRC 에다 넣고 저장하고 테스트 해보라. (처음 저장시 :e % 필요할 수도 있음.)
+
+# A More Complicated Mapping
+
+지금까지 간단한 키매핑을 만들어보았다.
+
+이것만 가지고는 우리가 처음 목표로 삼았던 plugin 제작과는 거리가 멀다고 느껴질 수도 있다.
+
+아주 조금, 복잡한 키매핑을 만들어보자.
+
+우리가 "목표로" 하는 키매핑은 해당커서에 있는 단어에 대괄호 "[]" 로 감싸는 것이다.
+
+어떻게 하면 될까? "일단" 키매핑을 바로 만들지 말고 어떻게 하면 해당 단어를 기계적인 방법으로 [] 로 감쌀지 생각해본다.
+
+일단 나 같은 경우엔 bi"<esc>ww... 으로 시도해보았다. 하지만 ww 에서 다음단어의 시작으로 가서 실패했다.
+
+두번 째 시도에선 bi"<esc>ea" 으로 성공했다.
+
+<leader>S[ 으로 매핑을 한다고 하면
+
+```
+:nnoremap <leader>S[ bi"<esc>ea"
+```
+
+이렇게 하면 된다.
+
+
+감이 조금 "왔으면" 한다.
+
+
+
+# Buffer-Local Options and Mappings
+
+# Auto Commands
+
+# Auto Command Groups
+
+# Operator-Pending Mappings
+
+# More Operator-Pending Mappings
+
+# Status Lines
+
+# Responsible Coding
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
