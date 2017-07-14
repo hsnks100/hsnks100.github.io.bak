@@ -1,45 +1,28 @@
+/**
+ * Table of Contents
+ */
+#markdown-toc {
+  @include media-query($on-palm) {
+    display: none;
+  }
 
-#toc, .toc, .mw-warning {
-    background-color: #F9F9F9;
-    border: 1px solid #AAAAAA;
-    font-size: 95%;
-    padding: 5px;
-}
-#toc h2, .toc h2 {
-    border: medium none;
-    display: inline;
-    font-size: 100%;
-    font-weight: bold;
-    padding: 0;
-}
-#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle {
-    text-align: center;
-    margin:0 8px 4px 14px;
-    padding-top:8px;
-    line-height: 1.5;
-    overflow:hidden;
-}
+  margin: 24px 0;
+  padding: 12px 32px;
+  border-top: dotted 3px $block-border-color;
+  border-bottom: dotted 3px $block-border-color;
+  background-color: $block-background-color;
+  line-height: 2;
 
-
-#toc ul, .toc ul {
-    list-style-image: none;
+  li {
+    font-size: $small-font-size;
     list-style-type: none;
-    margin:0 8px 7px 14px;
-    padding-left: 0;
-    text-align: left;
-}
-#toc ul ul, .toc ul ul {
-    margin: 0 0 0 2em;
-}
-#toc .toctoggle, .toc .toctoggle {
-    font-size: 94%;
-}
+    list-style-position: inside;
+  }
 
-#toc ul li {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#toc-container {
-	margin-bottom: 10px;
+  ol, ul {
+    li:before {
+      content: '~';
+      padding-right: 20px;
+    }
+  }
 }
