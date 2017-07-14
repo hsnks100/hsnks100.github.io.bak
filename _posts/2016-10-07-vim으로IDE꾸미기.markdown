@@ -7,7 +7,7 @@ tags: vim IDE build compile run
 category: vim
 comments: true
 ---
-* table of contents
+* TOC
 {:toc}
 
 

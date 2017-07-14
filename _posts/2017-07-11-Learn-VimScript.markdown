@@ -7,7 +7,7 @@ tags: vim script plugin
 comments: true
 category: vim
 ---
-* table of contents
+* TOC
 {:toc}
 
 
