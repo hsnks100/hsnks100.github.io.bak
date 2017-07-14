@@ -3,6 +3,8 @@ layout: default
 ---
 {% assign post = page %}
 
+{{ content | toc_generate }}
+
 <div class="container">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
