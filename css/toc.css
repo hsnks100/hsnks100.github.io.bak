@@ -1,28 +1,20 @@
-/**
- * Table of Contents
- */
+
 #markdown-toc {
-  @include media-query($on-palm) {
-    display: none;
-  }
+    margin: 24px 0;
+    padding: 12px 32px;
+    border-top: dotted 3px #aaa;
+    border-bottom: dotted 3px #aaa;
+    background-color: #f2f2f2;
+line-height: 2; }
 
-  margin: 24px 0;
-  padding: 12px 32px;
-  border-top: dotted 3px $block-border-color;
-  border-bottom: dotted 3px $block-border-color;
-  background-color: $block-background-color;
-  line-height: 2;
-
-  li {
-    font-size: $small-font-size;
+@media screen and (max-width: 600px) {
+    #markdown-toc {
+display: none; } }
+#markdown-toc li {
+    font-size: 14px;
     list-style-type: none;
-    list-style-position: inside;
-  }
+list-style-position: inside; }
+#markdown-toc ol li:before, #markdown-toc ul li:before {
+    content: '~';
+padding-right: 20px; }
 
-  ol, ul {
-    li:before {
-      content: '~';
-      padding-right: 20px;
-    }
-  }
-}
