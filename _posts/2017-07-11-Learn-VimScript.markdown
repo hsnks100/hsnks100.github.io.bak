@@ -549,6 +549,40 @@ augroup END
 
 # Responsible Coding
 
+# Variables
+
+# Variable Scoping
+
+# Control Statements
+
+## if 
+## for
+## while
+## for-loop
+
+# Functions
+
+## Basic
+
+## Arguments
+
+# Data Type
+
+## number
+## string
+string function
+
+
+# Excute
+
+# Normal
+
+
+# Excute Normal!
+
+# Regular Expression
+
+
 
 
 
