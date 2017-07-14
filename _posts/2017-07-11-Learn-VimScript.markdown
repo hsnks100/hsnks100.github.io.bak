@@ -7,11 +7,9 @@ tags: vim script plugin
 comments: true
 category: vim
 ---
-
-
-
 * table of contents
 {:toc}
+
 
 Vim Script 를 배워봅시다.
 
