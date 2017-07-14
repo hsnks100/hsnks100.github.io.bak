@@ -310,9 +310,236 @@ bi"<esc>ww...
 
 # Buffer-Local Options and Mappings
 
+
+## key mapping
+buffer-local 기준으로 옵션과 키매핑을 지정할 수도 있다.
+
+```
+:nnoremap <buffer> - x
+```
+
+으로 nnoremap 지정하고, :vs some.txt 후
+
+some.txt buffer 에서 - 로 지워보려고 하면 x 명령어로 작동하지 않을 것이다.
+
+buffer 마다 키매핑을 다르게 할 수 있단 이야기다.
+
+nerdtree 가 설치되어있다면 nerdtree 를 열고 :nnoremap <buffer> 를 타이핑 해보면
+
+nerdtree 에서만 사용되는 키매핑을 볼 수 있다.
+
+## options & leader key
+
+set number 과 같은 일반 옵션도 buffer 기준으로 지정 할 수 있다.
+
+setlocal 을 통해 지정한다.
+
+leader key 도 마찬가지로 
+
+```
+:let maplocalleader=","
+:nnoremap <localleader> x
+```
+위 처럼 local 으로 지정할 수 있다.
+
+자세한건
+
+```
+:help setlocal
+:help maplocalleader
+```
+
+참고하면 된다.
+
+## Shadowing
+
+```
+:nnoremap <buffer> - x
+:nnoremap - i
+```
+
+두가지 매핑을 실행하고 - 를 눌렀을 때 어떤 결과가 나올까?
+
+vim 은 buffer 명령어를 우선순위로 잡는다.
+
+일반적인 프로그래밍 방식이랑 일치하며 이치에 맞아보인다.
+
+
+
 # Auto Commands
 
+앞서 vimrc 로드를 위해 잠깐 소개했던 auto commands 를 정식으로 소개한다.
+
+``` 
+:autocmd BufNewFile * :echom "hi newfile"
+:autocmd BufNewFile *.txt :echom "hi textfile"
+:e somefile
+:e somefile.txt
+```
+
+위 명령을 실행하고 :messages 해보자.
+
+autocmd 는 특정한 이벤트가 발생할 때 실행할 명령어를 등록할 수 있다.
+
+이 단문일 경우엔 in-line 으로 명령을 삽입하면 된다. 만약 여러 문장이면 
+
+뒷장에서 소개할 함수를 이용하여 
+```
+:call function()
+```
+
+함수를 호출 할 수도 있다.
+
+```
+:autocmd BufNewFile * :write
+         ^          ^ ^
+         |          | |
+         |          | 여기서부터 커맨드
+         |          |
+         |          대상이 되는 파일의 패턴
+         |
+         이벤트 종류
+```
+
+여기서 이벤트 종류와 파일의 패턴에 대해서 좀 더 알아보고 싶으면
+
+```
+:help event
+:help autocmd-patterns 
+```
+
+을 통해 알아보도록 하자. 
+
+
+
+normal 명령어와 같이 써서 일련의 키시퀀스도 전달가능하다.
+
+``` 
+:autocmd BufWritePre *.vimrc normal gg=G 
+```
+
+
+
+## Multiple Events
+
+```
+:autocmd BufWritePre *.virmc normal gg=G 
+:autocmd BufRead *.virmc normal gg=G 
+``` 
+
+위 명령어는 
+
+``` 
+:autocmd BufNewFile,BufRead *.html normal gg=G
+```
+
+이렇게 하나의 명령어로 합칠 수 있다.
+
+
+## autocmd FileType
+
+```
+:autocmd FileType javascript nnoremap <buffer> _ I//<esc>
+:autocmd FileType python     nnoremap <buffer> _ I#<esc> 
+```
+
+FileType 에 따라 명령어를 지정할 수도 있다.
+
+## Buffer-local autocommands
+
+```
+:au CursorHold <buffer>  echo 'hold'
+:au BufNewFile *.txt au CursorHold <buffer>  echo 'hold txtfile'
+:au BufNewFile *.js au CursorHold <buffer>  echo 'hold jsfile'
+```
+
+autocmd 또한 buffer 단위로 명령을 지정할 수 있다.
+
+위 명령어중 모르는 이벤트가 있을것이다. 지금까지 이 문서를 잘 따라왔다면 모르는 이벤트에 대해 어떻게 정보를 얻어야 하는지 알거라 생각한다.
+
+즉시 실행해보자.
+
+```
+:help autocmd-buflocal
+```
+
+autocmd-buflocal 에 더 알아보고 싶으면 위 명령어를 통해 더 확인해보자. 
+
 # Auto Command Groups
+
+위에 소개했던 autocmd 는 사실 한가지 문제가 있었다.
+
+이를 알아보기 위해
+
+```
+:au BufWrite * :echom "writing buffer."
+:w
+:messages
+```
+
+해보자. 예상대로 writing buffer 를 볼 수 있을 것이다.
+
+여기서 멈추지 말고 한번 더 
+```
+:au BufWrite * :echom "writing buffer."
+```
+
+를 실행하고 
+```
+:w
+```
+
+해보자. messages 창에는 앞에 기록됐던 로그를 포함하여, 로그가 3개가 찍혀있다. 
+
+무슨 일이 일어난걸까?
+
+vim 의 au 는 명령어들이 중첩된다. 
+
+이를 해결하기 위해 autocmd group 이라는게 있다. 
+
+```
+:augroup testgroup
+:au BufWrite * :echom "writing buffer1 in a group"
+:augroup END
+:augroup testgroup
+:au BufWrite * :echom "writing buffer2 in a group"
+:augroup END
+:w
+```
+
+위 명령어를 실행해보자. 어떤지 살펴보자. 기대했던 결과가 나왔는가?
+
+autocmd group 이 아까와 같은 불상사를 해결할 수 있다고 했는데, 사기 당한 기분이 들 것이다.
+
+그렇다, augroup 조차 명령어가 중첩이 된다.
+
+``` 
+:augroup testgroup
+:au!
+:au BufWrite * :echom "writing buffer in a group"
+:augroup END
+:w
+```
+
+위와 같이 입력을 다시 해보고 로그를 살펴보자.
+
+
+au! 는 선택된 그룹의 autocmd 명령어를 초기화 시켜준다.
+
+자세한 사항은 
+
+```
+:help autocmd-remove
+```
+
+자기의 vimrc 에 다음과 같이 augroup 을 등록시켜보자.
+
+```
+augroup testgroup
+    au!
+    au BufWrite * :echom "writing buffer in a group"
+augroup END 
+```
 
 # Operator-Pending Mappings
 
