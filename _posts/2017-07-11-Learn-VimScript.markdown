@@ -539,13 +539,50 @@ augroup testgroup
 augroup END 
 ```
 
-# Operator-Pending Mappings
+그리고 테스트를 해보자. 기대한 결과가 나오는지 확인하자.
 
-# More Operator-Pending Mappings
+
+return person.get_pets(type="", fluffy_only=True)
 
 # Status Lines
 
-# Responsible Coding
+vim 에서 제공하는 기능중에 현재 상태를 보여주는 곳이 있다. 그곳이 status line 이다.
+
+``` 
+:set statusline=filename:%f\ filetype:%y\ %l/%L."asdasd"
+```
+
+길게 설명할 것이 없이 위 명령어를 적용시켜 보자.
+
+마치 C언어의 printf 를 보는 듯 하다.
+
+## General Format
+
+```
+The option consists of printf style '%' items interspersed with
+normal text.  Each status line item is of the form:
+  %-0{minwid}.{maxwid}{item}
+
+```
+
+:help statusline 을 통해 일반적인 표현법을 보면 위처럼 설명이 나와있다.
+
+간단히 확인하기 위해서
+
+```
+:set statusline=%l/%5.7L
+```
+해보자. 
+
+무한한 가능성을 statusline 에 부여하기 위해
+
+```
+:let g:ksoo="happy"
+:set statusline=%{g:ksoo} 
+```
+
+해서 어떤게 나오는지 살펴보자.
+
 
 # Variables
 
