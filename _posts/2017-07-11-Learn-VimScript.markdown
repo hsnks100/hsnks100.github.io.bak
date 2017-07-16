@@ -793,6 +793,25 @@ endif
 
 위 예문으로 확인하자.
 
+## Condition
+
+위에서 다룬 비교 명령만으론 정말로 부족하다. 
+
+```
+set noignorecase
+if "foo" == "FOO"
+    echom "vim is case insensitive"
+elseif "foo" == "foo"
+    echom "vim is case sensitive"
+endif
+
+set ignorecase
+if "foo" == "FOO"
+    echom "vim is case insensitive"
+elseif "foo" == "foo"
+    echom "vim is case sensitive"
+endif
+```
 ## for
 ## while
 ## for-loop
