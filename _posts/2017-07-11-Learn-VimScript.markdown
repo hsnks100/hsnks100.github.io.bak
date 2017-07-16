@@ -586,11 +586,213 @@ normal text.  Each status line item is of the form:
 
 # Variables
 
+지금까지 단일 명령어에 대한 것만 우리는 다룰 수 있었다.
+
+이번장 부터는 정말 프로그래밍적인 관점에서 vim script 를 다뤄보려 한다. 
+
+간단히 변수 할당부터 시작해보자.
+
+```
+:let t = "test"
+:echo t
+```
+
+test 라는 글자가 찍히는 것을 볼 수 있다. t 라는 변수에 문자열 "test" 를 넣은 것이다.
+
+test 대신 숫자를 쓸 수도 있다.
+
+```
+:let t = 1004
+:echo t
+```
+
+즉, vim script 변수엔 타입이 없다. 그냥 대입하면 된다.
+
+## Option as Variables
+vim option 들을 변수로써 다룰 수도 있다. 
+
+예를 들어 sw(shiftwidth) 값을 echo 로 출력해보자.
+
+```
+:echo &sw
+```
+
+그렇다. 옵션에 대해서 접근하려면 &를 붙여서 접근한다. 이 & 표기는 C++의 reference 와는 전혀 성격도 다르고 관련이 없다.
+
+&sw 는 읽기 전용의 변수가 아니다. 그래서 
+
+```
+let &sw = &sw * 2
+```
+
+이런식으로 두배씩 올리는 명령도 등록 가능하다.
+
+그러면 set 과 let 둘다 option 을 변경시킬 수 있는데 무슨 차이가 있을까?
+
+let 은 프로그래밍적으로 제어할 수 있는 여지를 제공해주기 때문에 좀 더 프로그래머 관점에서  유연하게 옵션값을 다룰 수 있다.
+
+## Local Options
+
+전장에서 :setlocal 이라는 명령어가 기억나나?
+
+:setlocal 을 :let 로서 제어하는 변수가 있을것이다.
+
+간단하게 앞에 l: 만 붙여주면 된다.
+
+예를 들어
+
+```
+:let &l:sw=8
+```
+
+이것은 :setlocal sw=8 과 동일한 효과를 낸다. 앞서 설명했지만 let 을 이용한 방식은 프로그래밍적으로 유연성을 제공해준다.
+
+## Registers as Variables
+
+당장 :reg 를 쳐보자.
+
+우리가 vim 을 쓰면서 등록해뒀던 registers 가 보일것이다.
+
+이 registers 를 변수로서 가져오는 방법이 있다.
+
+prefix @ 를 붙이면 된다.
+
+아무 문장이나 yy 를 통해 yank 한 후에 
+
+```
+:echo @0 
+```
+
+을 타이핑해보자. 
+
+이를 이용해서 지워진 버퍼를 이용해 레지스터를 이용하는 방법은 그다지 추천되지 않는다.
+
+왜냐면 사용자가 레지스터에 중요한 내용을 가지고 있을 가능성이 있기 때문이다.
+
 # Variable Scoping
+
+전장에서 &l:something 이 기억나는가? 다양한 프로그래밍 언어에서 변수의 스코프를 지원한다. 
+
+C언어를 예를 들면
+
+``` c
+int a = 3;
+{
+        int a = 5;
+        print a 
+}
+print a
+```
+
+블록 {} 을 기준으로 스코프가 결정된다. vim 은 텍스트 에디터답게 특이한 방식으로 변수의 스코프를 결정한다.
+
+간단하게 버퍼 스코프를 테스트 해보자.
+
+일단 아무 문서나 열고 
+
+:let b:vim = "script"
+:echo b:vim
+
+써보고 다른 버퍼를 열어서 또 다시
+
+:echo b:vim
+
+을 써보자. 두번 째 :echo 명령어에서 변수를 찾을 수 없다고 떴을 것이다.
+
+이러한 스코프는 b: 를 포함해서 8개의 스코프가 있다. 이를 확인하기 위해서 
+
+:help internal-variables 
+
+를 통해 한번 어떤 스코프가 있는지 살펴보자.
+
+이번에는 친절하게 help 문서를 직접 가져왔다.
+
+```
+|buffer-variable|    b:	  Local to the current buffer.
+|window-variable|    w:	  Local to the current window.
+|tabpage-variable|   t:	  Local to the current tab page.
+|global-variable|    g:	  Global.
+|local-variable|     l:	  Local to a function.
+|script-variable|    s:	  Local to a |:source|'ed Vim script.
+|function-argument|  a:	  Function argument (only inside a function).
+|vim-variable|       v:	  Global, predefined by Vim.
+```
+
+언제나 help 문서를 보는 버릇을 들이자. 
 
 # Control Statements
 
+이 장부터는 test.vim 와 같은 vim 을 열어놓고 테스트 하는게 편하다.
+
+
+
+
 ## if 
+
+먼저 if 문을 확인하자.
+
+test.vim 
+```
+if 1
+    echom "one"
+endif 
+
+if "string"
+    echom "string != false?"
+endif
+```
+
+기대했던 결과가 나왔나? 아마 아닐것이다.
+
+두번 째 echom 이 나오지 않았다. 무슨일이지?
+
+이 현상을 좀 더 고찰하기 위해서 다음 명령을 수행해보자.
+
+```
+if "11"
+    echom "wow!"
+endif
+```
+
+wow! 가 보인다. 감이 올거다. 좀 더 테스트 해보자.
+
+```
+echom "string" + 5
+echom "10string" + 5
+echom "string10" + 10 
+```
+
+결과는 
+```
+5
+15
+10 
+```
+
+아하! vim 은 string 이 정수로 평가 되는 장소에 있으면 정수로 바뀌려는 성질을 가지고 있구나.
+
+그 변환 규칙은 문자열의 앞에 숫자가 없으면 0이 되구나!
+
+이제 다시 한번 위에 처음 제시한 test.vim 을 보면 결과가 빠르게 이해가 될 것이다.
+
+## Else and Elseif
+
+if 가 있으면 당연 else 가 있다.
+
+test.vim
+```
+let k=5
+if k==1
+    echo "k=1"
+elseif k>=6
+    echo "k>=6"
+else
+    echo "k=?"
+endif 
+```
+
+위 예문으로 확인하자.
+
 ## for
 ## while
 ## for-loop
