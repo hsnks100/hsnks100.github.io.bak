@@ -34,17 +34,17 @@ Vim Script 를 배워봅시다.
 .vimrc 파일은 시스템마다 로드하는 위치와 순서가 다를 수 있다.
 
 본인의 컴퓨터의 환경에 대해서 살펴보고 싶으면 
-```
+``` vim
 :version
 ```
 해보면 로드하는 vimrc 에 대한 정보를 알 수 있다. 
 
 조금 더 일반적인 내용에 대해서 보고 싶으면 
-```
+``` vim
 :help vimrc
 ```
 
-```
+``` vim
 	Places for your personal initializations:
 		Unix		$HOME/.vimrc or $HOME/.vim/vimrc
 		OS/2		$HOME/.vimrc, $HOME/vimfiles/vimrc
@@ -65,7 +65,7 @@ vim 에서는 간단히 :e ~/.vimrc 정도만 입력해도 자기 시스템에 �
 
 다음시작 때 부터 vim 은 vimrc 을 읽어들여 실행하게 된다.
 
-```
+``` vim
 :echo $MYVIMRC
 ```
 으로도 확인 할 수 있다.
@@ -79,7 +79,7 @@ vim 스크립트를 본격적으로 배우기 전에 기본적인 변수확인�
 
 vim 에서는 echo 내장 명령어를 통해서 변수값을 간단하게 확인할 수 있다.
 
-```
+``` vim
 :echo "hello world"
 ```
 
@@ -87,7 +87,7 @@ vim 에서는 echo 내장 명령어를 통해서 변수값을 간단하게 확�
 
 하지만 이걸로만은 뭔가 나중에 확인하기엔 부족하다. 지나간 로그에 대해서 보고 싶을 때가 있다.
 
-```
+``` vim
 :echo "hello1"
 :echom "hello2"
 :messages 
@@ -102,7 +102,7 @@ vim 에서는 echo 내장 명령어를 통해서 변수값을 간단하게 확�
 vim 에서 가독성을 높이기 위해서 주석을 달 수 있다. 
 
 ~/.vimrc 
-```
+``` vim
 " open my vimrc
 nnoremap <leader>feR :source ~/.vimrc<CR>
 ```
@@ -116,7 +116,7 @@ Vim 은 어떻게 동착할지에 대한 많은 옵션을 가지고 있다.
 
 대부분 옵션들은 on/off 식으로 작동하게 되는데 :set XXX, :set noXXX 식으로 XXX 에 대한 사항을 toggle 할 수 있다.
 
-```
+``` vim
 :set number 
 :set nonumber
 ```
@@ -124,7 +124,7 @@ Vim 은 어떻게 동착할지에 대한 많은 옵션을 가지고 있다.
 
 이미 vim 에 익숙한 사용자라면 잘 알겠지만 postfix 로 붙는 ? 과 ! 에 대해서도 알아둬야 한다.  
 
-```
+``` vim
 :set number!
 ```
 
@@ -132,7 +132,7 @@ on/off 토글하기 위해서는 ! 를 붙인다.
 
 현재 상태를 확인하기 위해서는 
 
-```
+``` vim
 :set number?
 ```
 
@@ -143,7 +143,7 @@ on/off 토글하기 위해서는 ! 를 붙인다.
 
 Vim 의 장점중 하나가 키맵핑을 이용해서 동작을 바꿀 수 있다는 점이다. 
 
-```
+``` vim
 :map _ x
 ```
 타이핑을 하고 문자 위에서 _ 를 쳐보면 문자가 지워지는 것을 볼 수 있다.
@@ -154,14 +154,14 @@ Vim 의 장점중 하나가 키맵핑을 이용해서 동작을 바꿀 수 있�
 
 map 을 쓸 때 특정모드에서만 가능하도록 매핑을 할 수 있다. 
 
-```
+``` vim
 :imap jj <ESC>j 
 ```
 라고 입력 후 insert 모드에서 jj 를 눌러보자. 
 
 vim 에서는 이러한 모드가 여러가지가 있는데
 
-```
+``` vim
 :help :map-modes
 ```
 으로 확인해보자. 
@@ -170,7 +170,7 @@ vim 에서는 이러한 모드가 여러가지가 있는데
 
 # Recursive Mapping
 
-```
+``` vim
 :nmap x dd
 :nmap _ x
 ```
@@ -183,7 +183,7 @@ vim 은 _ 를 입력받아서 x 를 타이핑하게 하고, 또 vim 은 x 는 dd
 
 이를 위해서 vim 은 no-remap 을 제공한다.
 
-```
+``` vim
 :nnoremap x dd
 :nnoremap _ x
 ```
@@ -193,13 +193,13 @@ vim 은 _ 를 입력받아서 x 를 타이핑하게 하고, 또 vim 은 x 는 dd
 # Leaders
 앞에서 정했 듯 
 
-```
+``` vim
 :nnoremap x dd 
 ```
 라고 정의하고 x 를 누르면 dd 가 실행되는 것을 알 수 있었다. 하지만 이러한 매핑은 기본동작을 바꾸는 좋지 않은 행동이다.
 
 그래서 
-```
+``` vim
 :nnnoremap -x dd
 ```
 
@@ -211,7 +211,7 @@ vim 은 _ 를 입력받아서 x 를 타이핑하게 하고, 또 vim 은 x 는 dd
 
 이 때 leader key 를 쓰면 사용자가 매핑한 leader key 기준으로 매핑을 할 수 있다.
 
-```
+``` vim
 :let mapleader = ","
 :nnoremap <leader>x dd
 ```
@@ -221,7 +221,7 @@ vim 은 _ 를 입력받아서 x 를 타이핑하게 하고, 또 vim 은 x 는 dd
 이러한 leader key 의 장점은 사용자가 원하는 키로 매핑을 일괄적으로 변경할 수 있다는 점이다.
 
 local 하에서 leader key 를 지정하고 싶다면 
-```
+``` vim
 :help maplocalleader
 ```
 
@@ -240,7 +240,7 @@ local 하에서 leader key 를 지정하고 싶다면
 
 우리는 키매핑을 배웠기 때문에 다음과 같이 매핑을 한다.
 
-```
+``` vim
 :nnoremap <leader>fed :source $MYVIMRC<cr>
 ```
 
@@ -252,7 +252,7 @@ local 하에서 leader key 를 지정하고 싶다면
 
 여기서 :source % 또한 키매핑으로 다음과 같이
 
-```
+``` vim
 :nnoremap <leader>feR :source $MYVIMRC<cr>
 ```
 
@@ -260,7 +260,7 @@ local 하에서 leader key 를 지정하고 싶다면
 
 아직 배우지 않았지만 autocmd 를 이용하여 다음과 같이 설정할 수 있다.
 
-``` 
+``` vim 
 augroup filetype_vim
   autocmd!
   autocmd BufWritePost *.vimrc,*.vim source $MYVIMRC
@@ -283,19 +283,19 @@ augroup END
 
 일단 나 같은 경우엔 
 
-```
+``` vim
 bi"<esc>ww...
 ```
 으로 시도해보았다. 하지만 ww 에서 다음단어의 시작으로 가서 실패했다.
 
 두번 째 시도에선 bi"<esc>ea" 으로 성공했다.
 
-```
+``` vim
 <leader>S[
 ```
 으로 매핑을 한다고 하면
 
-```
+``` vim
 :nnoremap <leader>S[ bi"<esc>ea"
 ```
 
@@ -312,7 +312,7 @@ bi"<esc>ww...
 ## key mapping
 buffer-local 기준으로 옵션과 키매핑을 지정할 수도 있다.
 
-```
+``` vim
 :nnoremap <buffer> - x
 ```
 
@@ -334,7 +334,7 @@ setlocal 을 통해 지정한다.
 
 leader key 도 마찬가지로 
 
-```
+``` vim
 :let maplocalleader=","
 :nnoremap <localleader> x
 ```
@@ -342,7 +342,7 @@ leader key 도 마찬가지로
 
 자세한건
 
-```
+``` vim
 :help setlocal
 :help maplocalleader
 ```
@@ -351,7 +351,7 @@ leader key 도 마찬가지로
 
 ## Shadowing
 
-```
+``` vim
 :nnoremap <buffer> - x
 :nnoremap - i
 ```
@@ -368,7 +368,7 @@ vim 은 buffer 명령어를 우선순위로 잡는다.
 
 앞서 vimrc 로드를 위해 잠깐 소개했던 auto commands 를 정식으로 소개한다.
 
-``` 
+``` vim 
 :autocmd BufNewFile * :echom "hi newfile"
 :autocmd BufNewFile *.txt :echom "hi textfile"
 :e somefile
@@ -382,13 +382,13 @@ autocmd 는 특정한 이벤트가 발생할 때 실행할 명령어를 등록�
 이 단문일 경우엔 in-line 으로 명령을 삽입하면 된다. 만약 여러 문장이면 
 
 뒷장에서 소개할 함수를 이용하여 
-```
+``` vim
 :call function()
 ```
 
 함수를 호출 할 수도 있다.
 
-```
+``` vim
 :autocmd BufNewFile * :write
          ^          ^ ^
          |          | |
@@ -401,7 +401,7 @@ autocmd 는 특정한 이벤트가 발생할 때 실행할 명령어를 등록�
 
 여기서 이벤트 종류와 파일의 패턴에 대해서 좀 더 알아보고 싶으면
 
-```
+``` vim
 :help event
 :help autocmd-patterns 
 ```
@@ -412,7 +412,7 @@ autocmd 는 특정한 이벤트가 발생할 때 실행할 명령어를 등록�
 
 normal 명령어와 같이 써서 일련의 키시퀀스도 전달가능하다.
 
-``` 
+``` vim 
 :autocmd BufWritePre *.vimrc normal gg=G 
 ```
 
@@ -420,14 +420,14 @@ normal 명령어와 같이 써서 일련의 키시퀀스도 전달가능하다.
 
 ## Multiple Events
 
-```
+``` vim
 :autocmd BufWritePre *.virmc normal gg=G 
 :autocmd BufRead *.virmc normal gg=G 
 ``` 
 
 위 명령어는 
 
-``` 
+``` vim 
 :autocmd BufNewFile,BufRead *.html normal gg=G
 ```
 
@@ -436,7 +436,7 @@ normal 명령어와 같이 써서 일련의 키시퀀스도 전달가능하다.
 
 ## autocmd FileType
 
-```
+``` vim
 :autocmd FileType javascript nnoremap <buffer> _ I//<esc>
 :autocmd FileType python     nnoremap <buffer> _ I#<esc> 
 ```
@@ -445,7 +445,7 @@ FileType 에 따라 명령어를 지정할 수도 있다.
 
 ## Buffer-local autocommands
 
-```
+``` vim
 :au CursorHold <buffer>  echo 'hold'
 :au BufNewFile *.txt au CursorHold <buffer>  echo 'hold txtfile'
 :au BufNewFile *.js au CursorHold <buffer>  echo 'hold jsfile'
@@ -457,7 +457,7 @@ autocmd 또한 buffer 단위로 명령을 지정할 수 있다.
 
 즉시 실행해보자.
 
-```
+``` vim
 :help autocmd-buflocal
 ```
 
@@ -469,7 +469,7 @@ autocmd-buflocal 에 더 알아보고 싶으면 위 명령어를 통해 더 확�
 
 이를 알아보기 위해
 
-```
+``` vim
 :au BufWrite * :echom "writing buffer."
 :w
 :messages
@@ -478,12 +478,12 @@ autocmd-buflocal 에 더 알아보고 싶으면 위 명령어를 통해 더 확�
 해보자. 예상대로 writing buffer 를 볼 수 있을 것이다.
 
 여기서 멈추지 말고 한번 더 
-```
+``` vim
 :au BufWrite * :echom "writing buffer."
 ```
 
 를 실행하고 
-```
+``` vim
 :w
 ```
 
@@ -495,7 +495,7 @@ vim 의 au 는 명령어들이 중첩된다.
 
 이를 해결하기 위해 autocmd group 이라는게 있다. 
 
-```
+``` vim
 :augroup testgroup
 :au BufWrite * :echom "writing buffer1 in a group"
 :augroup END
@@ -511,7 +511,7 @@ autocmd group 이 아까와 같은 불상사를 해결할 수 있다고 했는�
 
 그렇다, augroup 조차 명령어가 중첩이 된다.
 
-``` 
+``` vim 
 :augroup testgroup
 :au!
 :au BufWrite * :echom "writing buffer in a group"
@@ -526,13 +526,13 @@ au! 는 선택된 그룹의 autocmd 명령어를 초기화 시켜준다.
 
 자세한 사항은 
 
-```
+``` vim
 :help autocmd-remove
 ```
 
 자기의 vimrc 에 다음과 같이 augroup 을 등록시켜보자.
 
-```
+``` vim
 augroup testgroup
     au!
     au BufWrite * :echom "writing buffer in a group"
@@ -548,7 +548,7 @@ return person.get_pets(type="", fluffy_only=True)
 
 vim 에서 제공하는 기능중에 현재 상태를 보여주는 곳이 있다. 그곳이 status line 이다.
 
-``` 
+``` vim 
 :set statusline=filename:%f\ filetype:%y\ %l/%L."asdasd"
 ```
 
@@ -558,7 +558,7 @@ vim 에서 제공하는 기능중에 현재 상태를 보여주는 곳이 있다
 
 ## General Format
 
-```
+``` vim
 The option consists of printf style '%' items interspersed with
 normal text.  Each status line item is of the form:
   %-0{minwid}.{maxwid}{item}
@@ -569,14 +569,14 @@ normal text.  Each status line item is of the form:
 
 간단히 확인하기 위해서
 
-```
+``` vim
 :set statusline=%l/%5.7L
 ```
 해보자. 
 
 무한한 가능성을 statusline 에 부여하기 위해
 
-```
+``` vim
 :let g:ksoo="happy"
 :set statusline=%{g:ksoo} 
 ```
@@ -592,7 +592,7 @@ normal text.  Each status line item is of the form:
 
 간단히 변수 할당부터 시작해보자.
 
-```
+``` vim
 :let t = "test"
 :echo t
 ```
@@ -601,7 +601,7 @@ test 라는 글자가 찍히는 것을 볼 수 있다. t 라는 변수에 문자
 
 test 대신 숫자를 쓸 수도 있다.
 
-```
+``` vim
 :let t = 1004
 :echo t
 ```
@@ -613,7 +613,7 @@ vim option 들을 변수로써 다룰 수도 있다.
 
 예를 들어 sw(shiftwidth) 값을 echo 로 출력해보자.
 
-```
+``` vim
 :echo &sw
 ```
 
@@ -621,7 +621,7 @@ vim option 들을 변수로써 다룰 수도 있다.
 
 &sw 는 읽기 전용의 변수가 아니다. 그래서 
 
-```
+``` vim
 let &sw = &sw * 2
 ```
 
@@ -641,7 +641,7 @@ let 은 프로그래밍적으로 제어할 수 있는 여지를 제공해주기 
 
 예를 들어
 
-```
+``` vim
 :let &l:sw=8
 ```
 
@@ -659,7 +659,7 @@ prefix @ 를 붙이면 된다.
 
 아무 문장이나 yy 를 통해 yank 한 후에 
 
-```
+``` vim
 :echo @0 
 ```
 
@@ -675,7 +675,7 @@ prefix @ 를 붙이면 된다.
 
 C언어를 예를 들면
 
-``` c
+``` vim c
 int a = 3;
 {
         int a = 5;
@@ -690,14 +690,14 @@ print a
 
 일단 아무 문서나 열고 
 
-```
+``` vim
 :let b:vim = "script"
 :echo b:vim
 ```
 
 써보고 다른 버퍼를 열어서 또 다시
 
-```
+``` vim
 :echo b:vim
 ```
 
@@ -705,7 +705,7 @@ print a
 
 이러한 스코프는 b: 를 포함해서 8개의 스코프가 있다. 이를 확인하기 위해서 
 
-```
+``` vim
 :help internal-variables 
 ```
 
@@ -713,7 +713,7 @@ print a
 
 이번에는 친절하게 help 문서를 직접 가져왔다.
 
-```
+``` vim
 |buffer-variable|    b:	  Local to the current buffer.
 |window-variable|    w:	  Local to the current window.
 |tabpage-variable|   t:	  Local to the current tab page.
@@ -738,7 +738,7 @@ print a
 먼저 if 문을 확인하자.
 
 test.vim 
-```
+``` vim
 if 1
     echom "one"
 endif 
@@ -754,7 +754,7 @@ endif
 
 이 현상을 좀 더 고찰하기 위해서 다음 명령을 수행해보자.
 
-```
+``` vim
 if "11"
     echom "wow!"
 endif
@@ -762,14 +762,14 @@ endif
 
 wow! 가 보인다. 감이 올거다. 좀 더 테스트 해보자.
 
-```
+``` vim
 echom "string" + 5
 echom "10string" + 5
 echom "string10" + 10 
 ```
 
 결과는 
-```
+``` vim
 5
 15
 10 
@@ -786,7 +786,7 @@ echom "string10" + 10
 if 가 있으면 당연 else 가 있다.
 
 test.vim
-```
+``` vim
 let k=5
 if k==1
     echo "k=1"
@@ -805,7 +805,7 @@ endif
 
 문자열에 대해서 비교를 해보자.
 
-```
+``` vim
 set noignorecase
 if "hello" == "HELLO"
     echom "case INsensitive"
@@ -854,7 +854,7 @@ endif
 ## list type
 다음장에서 반복문에 대해 이야기를 할텐데, 그 전에 list 자료형을 먼저 소개해야겠다.
 
-```
+``` vim
 echo [1,2,3]
 echo [1, [2,3]]
 echo [1,[2,3]][1]
@@ -870,7 +870,7 @@ indexing 에서 음수가 나오면 -1 은 마지막 요소를 가리킨다.
 
 하나만 더 해보자.
 
-```
+``` vim
 :echo [1,2,3][:1]
 :echo [1,2,3][1:]
 ```
@@ -878,7 +878,7 @@ indexing 에서 음수가 나오면 -1 은 마지막 요소를 가리킨다.
 여전히 파이썬의 indexing 과 비슷하다.
 
 또한 vim 은 string 을 indexing 으로 접근하는것을 허용한다.
-```
+``` vim
 :echo "hello"[1:2] 
 ```
 
@@ -886,7 +886,7 @@ indexing 에서 음수가 나오면 -1 은 마지막 요소를 가리킨다.
 
 ## Concatenation
 
-```
+``` vim
 :echo "hello"+"world"
 :echo "hello"."world"
 :echo [1,2] + [3]
@@ -899,7 +899,7 @@ list 는 + 으로 결합하면 합쳐지게 된다. 이 표현은 nested 된 표
 
 ## Built-in Functions For List
 
-```
+``` vim
 :let var = ['a']
 :call add(var, 'b')
 :echo var
@@ -910,7 +910,7 @@ list 는 + 으로 결합하면 합쳐지게 된다. 이 표현은 nested 된 표
 ```
 
 echo 의 결과
-```
+``` vim
 [a, b]
 a
 defaultvalue2
