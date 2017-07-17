@@ -833,7 +833,7 @@ endif
 
 비교 연산자 vim 은 ==?, ==# 를 제공한다.
 
-```
+``` vim
 if "hello" ==? "HELLO"
     echom "case INsensitive"
 elseif "foo" ==? "foo"
@@ -922,7 +922,7 @@ defaultvalue2
 
 ## for
 
-
+ 
 ## while
 ## for-loop
 
