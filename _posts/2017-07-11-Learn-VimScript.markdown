@@ -803,22 +803,126 @@ endif
 
 위에서 다룬 비교 명령만으론 정말로 부족하다. 
 
+문자열에 대해서 비교를 해보자.
+
 ```
 set noignorecase
-if "foo" == "FOO"
-    echom "vim is case insensitive"
+if "hello" == "HELLO"
+    echom "case INsensitive"
 elseif "foo" == "foo"
-    echom "vim is case sensitive"
+    echom "case sensitive"
 endif
 
 set ignorecase
-if "foo" == "FOO"
-    echom "vim is case insensitive"
+if "hello" == "HELLO"
+    echom "case INsensitive"
 elseif "foo" == "foo"
-    echom "vim is case sensitive"
+    echom "case sensitive"
 endif
 ```
+
+실행하고 결과를 보자.
+
+다른 언어들 처럼 == 는 무조건 insensitive 혹은 sensitive 둘중에 하나가 동작하는게 아니라, set ignorecase 유무에 따라 다른 동작을 하다니 어처구니가 없다.
+
+이처럼 문자열 비교에 있어서 == 를 쓰게 되면 set ignorecase 유무에 따라 다른 동작을 하게 된다. 이는 스크립트 제작에 있어서 큰 걸림돌로 다가온다.
+
+유저의 세팅을 믿으면 안된다.
+
+그러면 어떻게 하나?
+
+비교 연산자 vim 은 ==?, ==# 를 제공한다.
+
+```
+if "hello" ==? "HELLO"
+    echom "case INsensitive"
+elseif "foo" ==? "foo"
+    echom "case sensitive"
+endif
+
+if "hello" ==# "HELLO"
+    echom "case INsensitive"
+elseif "foo" ==# "foo"
+    echom "case sensitive"
+endif
+```
+
+==? : INsensitive  
+==# : sensitive
+
+
+## list type
+다음장에서 반복문에 대해 이야기를 할텐데, 그 전에 list 자료형을 먼저 소개해야겠다.
+
+```
+echo [1,2,3]
+echo [1, [2,3]]
+echo [1,[2,3]][1]
+echo [1,[2,3]][-1] 
+echo [1,2,3,4][0:2]
+``` 
+
+를 타이핑 해보자.
+
+vim 의 list indexing 은 파이썬의 list 와 흡사하다. 하지만 [0:2] 에서 범위는 실제로 [0,2] 였다. (파이선은 [0,1] 범위)
+
+indexing 에서 음수가 나오면 -1 은 마지막 요소를 가리킨다.
+
+하나만 더 해보자.
+
+```
+:echo [1,2,3][:1]
+:echo [1,2,3][1:]
+```
+
+여전히 파이썬의 indexing 과 비슷하다.
+
+또한 vim 은 string 을 indexing 으로 접근하는것을 허용한다.
+```
+:echo "hello"[1:2] 
+```
+
+실행해보면 el 이 나온다.
+
+## Concatenation
+
+```
+:echo "hello"+"world"
+:echo "hello"."world"
+:echo [1,2] + [3]
+:echo [100, 101, [1,2] + [3]]
+```
+
+문자열의 결합은 . 으로 하게 되고, 문자열의 결합을 + 로 하면 앞서 살펴 봤듯 숫자로 평가 되면서 0 이 나온다.
+
+list 는 + 으로 결합하면 합쳐지게 된다. 이 표현은 nested 된 표현식에도 쓸 수 있고 매우 유연하게 쓸 수 있다.
+
+## Built-in Functions For List
+
+```
+:let var = ['a']
+:call add(var, 'b')
+:echo var
+:echo get(var, 0, "defaultvalue")
+:echo get(var, 33, "defaultvalue2") 
+:echo index(var, 'b')
+:echo index(var, 'c') 
+```
+
+echo 의 결과
+```
+[a, b]
+a
+defaultvalue2
+1
+-1
+```
+
+부연 설명은 하지 않겠다. 더 궁금한 사항이 있으면 :help 를 활용하자.  
+
 ## for
+
+
 ## while
 ## for-loop
 
