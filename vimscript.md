@@ -1,17 +1,29 @@
 ---
-layout: default
+layout: post
+title: "Learn VimScript"
+author: 뻘짓마스터(hsnks100@gmail.com)
+date: 2017-07-11 20:24 +0900
+tags: vim script plugin
+comments: true
+category: vim
 ---
+* TOC
+{:toc}
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 centered">
-            <img src="{{ base_path | append : 'assets/img/user.png' }}" alt="Stanley">
-            <h1>안녕하세요. 갱수 입니다.</h1>
-            <p>
-                프로그래밍과 관련된 내용을 정리 및 기록하는 공간입니다. 일상 이야기도 다룹니다.
-            </p>
-        </div>
-        <!-- /col-lg-8 -->
-    </div>
-</div>
+Vim Script 를 배워봅시다.
+
+# VimScript 
+이 페이지는 vim 사용법을 알려주는 페이지는 아니다. 좀 더 vim 고급 사용자로 가기 위해서 vim-script 를 배우는 페이지다.
+
+이 페이지를 읽기전 기본적인 buffer, window, tab, vim operator(dd, x, i) 와, insert/ex/visual mode 등에 대해 익숙한 사용자를 대상으로 한다.
+
+크게 세가지 섹션으로 나누어서 설명할 것이다. 
+
+* 기본적인 key map 을 이용하는 방법
+
+* 프로그래밍 하는 방식을 통해 접근하는 vim script, 변수나 함수, 제어구조등이 포함된다.
+
+* 샘플 plugin 제작을 통해 실제 vim 생태에 기여하는 방법.
+
+
