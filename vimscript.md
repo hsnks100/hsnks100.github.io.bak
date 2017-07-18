@@ -1,11 +1,10 @@
 ---
-layout: post
+layout: book
 title: "Learn VimScript"
 author: 뻘짓마스터(hsnks100@gmail.com)
 date: 2017-07-11 20:24 +0900
 tags: vim script plugin
 comments: true
-category: vim
 ---
 * TOC
 {:toc}
