@@ -922,11 +922,234 @@ defaultvalue2
 
 ## for
 
- 
+vim 의 for 문은 기본적으로 list 를 순회하는데에 목적이 있다.
+
+간단히 예문을 적어보자면 
+``` vim
+for i in [1,2,3,4]
+    echom i
+endfor
+
+
+for [i, j] in [[1,2], [3,4]]
+    echom i . j
+    echom "-------"
+endfor
+
+for [i, j, k] in [[1,2,3], [4,5, 6]]
+    echom i . j . k
+    echom "-------"
+endfor
+```
+
+
+결과
+```
+1
+2
+3
+4
+-------
+12
+-------
+34
+
+....
+```
+
+형태가 된다. 마지막 [i, j, k] 는 어떻게 될지 직접 실행해보라.
+
+그리고 
+
+let var = [["apple", 1000], ["banana", 2000], ["pineapple", 3000]]
+
+이러한 listlist 가 있을 때 
+
+apple price : 1000  
+banana price : 2000  
+pineapple price : 3000  
+
+결과가 나오기 위해서 어떻게 코딩을 해야할지 풀어봐라. 농담이 아니다. 진짜 해봐야 한다.
+
+그래야 기억에 남는다. 
+
+그리고 vim-for 는 c-style 의 for 문을 제공하지 않는다. 
+
+예를 들면 for(i=0; i<=10; i++) 이러한 세개의 섹션으로 이뤄진 for 문을 지원하지 않는다.
+
+이는 while 로 처리해야 한다.
+
 ## while
-## for-loop
+
+while 은 아주 오래된 고전적인 루프문이다.
+
+이전에 c-style 의 for 문이 없다고 했지만 while 은 이를 100% 대체할 수 있다.
+
+``` 
+for(A; B; C) 
+    D 
+```
+
+위와 같은 문장이 있을 때 while 은 
+
+```
+A
+while B
+    D
+    C 
+endwhile
+```
+
+으로 1:1 대응 되는 문법이기 때문이다.
+
+간단히 예문을 살펴보자.
+``` vim 
+let c = 1
+
+while c <= 10
+    echo c
+    let c += 1
+endwhile 
+```
+
+직접 실행해보고 결과를 살펴봐라.
+
+그리고 
+
+```
+*
+**
+***
+****
+*****
+```
+
+이러한 별이 찍히도록 while 문을 사용해서 코딩해봐라.
+(hint : Concatenation, while, let)
+
+vim script 는 다른 언어랑 다르게 조금 문법이 조잡한 편이라서 이런거 직접 해보는게 도움이 된다.
+
+지금부터는 내가 내는 문제들을 직접 코딩을 하면서 익혀야 한다. 손이 기억을 해야 나중에 필요한 것들을 무리없이 만들 수 있다.  
+
+# Dictionary
+
+Dictionary 형태의 자료형에 대해서 소개한다.
+
+이 자료형은 매우매우 중요하다. 기본 string, number 타입은 당연히 알아야 하고 앞서 소개했던 list 도 많이 쓰지만, Dictionary 자료형태도 무지무지하게 많이 쓰인다.
+
+다른 프로그래밍을 접해봤다면 이 자료형의 중요성과 잠재력에 대해서는 알거라 생각한다.
+
+말이 길어졌는데, 내 문서의 특징은 "말은 짧게, 코드는 길게" 라는 철학이 있기 때문에 바로 예제 코드를 살펴보겠다.
+
+``` vim 
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000}
+
+echo c
+
+echo c["apple"]
+
+echo c["banana"]
+echo c.watermelon
+
+let index = "banana"
+echo c[index]
+
+" error
+echo c.index 
+
+let c["banana"] = 10
+echo c["banana"]
+```
+
+
+{key1:value1, key2:value2, ... } 형태다.
+
+보다시피 {} 으로 표현하고 javascript 의 그것과 매우 흡사하다.
+
+자료의 접근은 [] 또는 . 으로 한다. 하지만 . 간단하게 접근 할 수 있지만 변수를 index 로 쓰는건 안된다. 쓰임이 조금 제한된다.
+
+자료의 변경또한 let 으로 자유롭게 가능하다.
+
+하지만 한가지 제한이 있는데, key 는 무조건 문자열(문자)만 들어올 수 있다.
+
+
+## Remove
+
+
+
+``` vim
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000} 
+let t = remove(c, "apple") 
+echo t
+echo c 
+
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000}
+unlet c["apple"]
+echo c 
+```
+
+위 코드를 실행해보자. remove 는 삭제하면서 해당하는 key 의 value 를 리턴한다.
+
+반면 unlet 은 그렇지 않다. remove 쓸건지 unlet 을 쓸건지는 순전히 개인적인 취향차이라고 볼 수 있다.
+
+## Value-Check
+
+이 때 없는 값을 조회해보자. 예를 들면 c["dsjflajdfl"] 이러한 값을 echo 로 출력해보자.
+
+error가 날 것이다. vim 은 매우 유연하여 스크립트에 일부 에러가 나더라도 밑의 문장을 계속하여 실행한다. 하지만 이러한 메세지가 뜬다면 사용자도 신뢰를 가지지 못할 것이고, 더러운 메시지가 vim 을 덮을 것이다.
+
+그래서 해당하는 key 가 유효한지 확인하는 작업이 필요하게 된다.
+
+크게 세가지 스타일이 있다.
+
+``` vim
+
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000}
+try
+    let t = remove(c, "djfldsjlk")
+    echo t
+catch
+    echo "error"
+endtry
+""""""""""""""""""""""""""""""""""""""""""" 
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000}
+
+if has_key(c, "asdasld")
+    echo "has"
+else
+    echo "has not"
+endif
+""""""""""""""""""""""""""""""""""""""""""" 
+let value = get(c, "asdjasdjl", "defaultvalue")
+if value ==# "defaultvalue"
+    ...
+else
+    ...
+endif
+
+```
+
+try-catch 문을 이용하여 예외처리를 하거나, has_key 로 검사하거나, get 을 이용하여 defaultvalue 를 비교하면 된다.
+
+마지막으로 dictionary 를 loop 시키는 방법에 대해서 알아본다.
+
+``` vim 
+let c = {"apple":1000, "banana":2000, "pineapple":3000, "watermelon":10000} 
+echo items(c)
+for [i, j] in items(c)
+    echo i . " : " . j
+endfor
+```
+
+먼저 items(c) 을 출력값을 보자. 앞서 설명했던 dictionary 를 listlist 로 바꿔준다.
+
+그리고 우리는 listlists 를 loop 를 도는 방법을 배웠기 때문에 이를 활용할 수 있다.
+
+더 알고 싶으면 :help items 를 참고하자.  
 
 # Functions
+
+
 
 ## Basic
 
