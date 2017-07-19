@@ -675,7 +675,7 @@ prefix @ 를 붙이면 된다.
 
 C언어를 예를 들면
 
-``` vim c
+``` c
 int a = 3;
 {
         int a = 5;
@@ -1149,17 +1149,155 @@ endfor
 
 # Functions
 
+대부분의 프로그래밍 언어에서처럼 vimsciprt 도 함수를 지원한다. 
 
-
+어떻게 하는지 코드로 살펴보자.
 ## Basic
 
-## Arguments
+``` vim
+function Foo()
+    echom "hello"
+endfunction
 
-# Data Type
+call Foo()
+```
 
-## number
-## string
-string function
+실행해보자. 여기서 주목할 점은 함수이름의 시작이 대문자인것을 주목해야 한다. 소문자로 써보고 결과를 살펴보자.
+
+그리고 여기서 확인한 에러 넘버 Exxx 를 기억해서 :help Exxx 를 쳐보자.
+
+관련 내용을 확인하고 숙지하자.
+
+``` vim
+function s:foo()
+    echom "hello"
+endfunction 
+call s:foo()
+```
+
+저번장에서 배운 scope 가 기억나는지 모르겠다.
+
+변수뿐만 아니라 function 도 scope 를 지정할 수 있다.
+
+반복하자면 
+``` vim
+:help internal-variables 
+```
+
+을 이용해서 변수를 확인해보자.
+
+## redefinition
+
+실행했던 코드에서 다시 한번 :so % 를 해서 실행해보자.
+
+이미 함수가 존재한다고 에러를 뿜는다. 해결은 간단하다.
+
+``` vim
+function! s:foo()
+    echom "hello"
+endfunction 
+call s:foo()
+```
+
+앞에 ! 를 붙이면 이미 함수가 정의되어있더라도 에러를 무시하게 된다.
+
+## Parameters
+
+다른 언어에서도 마찬가지이겠지만 vim 함수에는 파라메터가 들어갈 수 있다. 
+
+``` vim
+function! s:power(name)
+    echom "hello : " . a:name
+endfunction
+
+call s:power("kangssu")
+```
+
+vim 함수에서는 파라메터를 참조하기 위해서는 a: 라는 스코프 지정자를 사용한다.
+
+만약 a: 를 붙이지 않는다면, vim script 는 name 을 찾을 수 없다고 에러를 뿜을 것이다.
+
+## ... parameter
+
+``` 
+function! s:power(...)
+    echom a:0
+    echom a:1
+    echo a:000
+
+    let l:i = 0
+    while l:i < len(a:000)
+        echo a:000[l:i]
+        let l:i += 1
+    endwhile
+endfunction
+
+call s:power("h", "i", "man")
+```
+
+위 코드는 ... 로 가변 인자를 받았을 때, 어떻게 접근하는지 알아볼 수 있는 코드다.
+
+차례대로 a:0, a:1, a:2, ... 식으로 접근가능하고, 전체 리스트를 뽑기 위해서는
+
+특별한 인덱스인 a:000 을 이용해서 접근한다.
+
+echo a:000 의 결과를 살펴보면
+
+```
+["h", "i", "man"]
+```
+
+으로 나온다.
+
+이 배열은 len 으로 크기를 얻어올 수 있어서 while 문으로 순회가능하다.
+
+l: 에 대해서 잘 모르겠다면 앞장을 복습해보자.
+
+c 언어의 printf 처럼 처음인자만 문자열으로 받고 나머지만 가변인자로 받는것이 가능하다.
+
+함수 선언부를 
+``` vim
+function! s:power(fixed, ...)
+```
+
+으로 바꾸고 다시 실행해보자.
+
+## rvalue-Parameters
+
+들어온 arguments 는 read-only 다. 이를 테스트 해보자.
+
+``` vim
+function! s:power(foo)
+    let a:foo = "error"
+    echo a:foo
+endfunction
+
+call s:power("man") 
+```
+다음과 같은 에러를 뱉을 거다. can not change read-only variable a:foo
+
+이로서 vim 의 function 에 대해서 조금 맛을 봤다. 아직은 살짝 맛만 본 단계지만 활용하는건 너의 몫이다.
+
+# Strings
+
+vim 은 기본적으로 텍스트 에디터가 무엇인가? 문자열을 다루는 소프트웨어다. 그 문자열을 다루는 소프트웨어의 스크립트에서 가장 중요한 것은 문자열을 처리하는 방법이다.
+
+그래서 이 장은 매우 중요하다.
+
+그래서 마지막 부분에 예제 문제를 몇개 던져줄텐데, 꼭 코딩을 해보고 넘어가도록 하자.
+
+## Length
+
+
+## Splitting
+
+## Joining
+
+## Lower & Upper
+
+
+
+
 
 
 # Excute
