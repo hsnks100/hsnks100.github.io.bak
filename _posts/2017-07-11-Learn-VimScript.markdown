@@ -1219,7 +1219,7 @@ vim 함수에서는 파라메터를 참조하기 위해서는 a: 라는 스코�
 
 ## ... parameter
 
-``` 
+``` vim
 function! s:power(...)
     echom a:0
     echom a:1
