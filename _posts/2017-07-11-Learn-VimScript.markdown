@@ -1286,21 +1286,102 @@ vim 은 기본적으로 텍스트 에디터가 무엇인가? 문자열을 다루
 
 그래서 마지막 부분에 예제 문제를 몇개 던져줄텐데, 꼭 코딩을 해보고 넘어가도록 하자.
 
-## Length
+## Basic
 
+``` vim 
+:echom "100 apple" + "200 man"
+```
 
-## Splitting
-
-## Joining
-
-## Lower & Upper
-
+결과는 300 이다.
 
 
 
+``` vim
+:echom "apple 100" + "man 200"
+```
+
+결과는 0 이다.
+
+기본적으로 + 연산은 오직 숫자에게만 적용된다.
+
+
+``` vim
+:echom "apple 100" . "man 200"
+```
+
+결과는 apple 100man 200
+
+## Special Characters
+
+특수한 문자 " 나 \ 를 표시하고 싶을 땐 escape 문자 \ 를 쓴다.
+
+
+
+``` vim
+:echom "my name is \"apple\"."
+```
+
+실행해보자.
+
+그리고 
+
+
+``` vim
+:echom 'my name is "apple".'
+```
+
+실행해보자.
+
+" 는 <\n, "> 와 같은 특수문자를 표현하기 위해 escape 문자가 필요하다.
+
+하지만 ' 는 escape 가 필요하지 않다.
+
+조금 더 테스트 하기 위해 
+
+
+``` vim
+:echom 'a''b'
+:echom 'a''''b'
+```
+
+두개의 명령어를 실행해보자. 
+
+그렇다. '' 는 ' 로 나온다.
+
+## String Functions
+
+
+``` vim
+:echo split("sang moo hospital")
+:echo split("sang|moo|hospital", "|")
+```
+
+결과는 둘다, 
+['sang', 'moo', 'hospital']
+
+그리고 합치는 것도 가능하다.
+
+
+``` vim
+:echo join(split("sang moo hospital"))
+:echo join(split("sang moo hospital"), "!!")
+```
+
+쳐보고 결과를 보자.
+
+join 의 인자로 list 를 받는다. list 를 두번 째 인자를 끼워 합친 결과가 리턴된다.
 
 
 # Excute
+
+
+Excute~Excute Normal! 까지 굉장히 중요한 장이다.
+
+사실 목차를 이것부터 해야한다고도 생각할 정도로 뭔가 만들 때 비중이 높은 챕터고, 개념을 확실히 짚고 넘어가야 한다.
+
+
+
+
 
 # Normal
 
