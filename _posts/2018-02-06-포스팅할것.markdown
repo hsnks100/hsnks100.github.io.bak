@@ -1,0 +1,48 @@
+---
+layout: post
+title: "포스팅할것"
+author: 뻘짓마스터(hsnks100@gmail.com)
+date: 2018-02-06 10:55 +0900
+tags: 
+comments: true
+---
+* table of contents
+{:toc}
+
+```
+
+    // 1자원할당
+    // 2자원할당
+    { 실패시 1자원 해제후 함수종료 }
+    // 3자원할당
+    { 실패시 1자원, 2자원 해제후 함수종료 }
+    // 4자원할당
+    { 실패시 1자원, 2자원 해제, 3자원해제후 함수종료 }
+    1,2,3,4 자원해제
+
+
+
+    int failStep = 0;
+    do {
+        // 1자원할당
+        // 2자원할당
+        { 실패시 failStep = 3; break; }
+        // 3자원할당
+        { 실패시 failStep = 2; break; }
+        // 4자원할당
+        { 실패시 failStep = 1; break; }
+    }while(0);
+
+    switch(failStep){
+        case 0:
+            4자원해제
+        case 1:
+            3자원해제
+        case 2:
+            2자원해제
+        case 3:
+            1자원해제 
+    }
+```
+
+차라리 고투
